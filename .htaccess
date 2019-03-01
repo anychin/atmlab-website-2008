@@ -1,0 +1,14 @@
+#AddType application/x-httpd-php5 .php
+#AddType text/x-component htc
+#php_value session.use_trans_sid off
+php_value expose_php off
+
+RewriteEngine on
+RewriteBase /
+ErrorDocument 404 error
+ErrorDocument 403 error
+RewriteRule !\.(js|ico|gif|jpg|png|css|html|swf|flv|zip|pdf|txt|doc|xls|rar|htm|htc)$ site.php
+AddDefaultCharset UTF-8
+
+#AddType application/x-httpd-php5 .php
+#php_value session.use_trans_sid off

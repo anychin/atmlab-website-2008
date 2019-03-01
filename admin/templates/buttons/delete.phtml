@@ -1,0 +1,20 @@
+<script>
+	onInit(function(){
+		jq("#deletebutton").click(function(){
+			if(confirm("Вы действительно хотите удалить?"))
+				jq.get("<? echo $button->url; ?>", function(){
+					document.location.href = "<?echo $button->redirrectUrl; ?>";
+				});
+			return false;
+		});
+	});
+</script>
+<?$title =$button->message;?>
+<a href="" title="<? echo $title ?>" id="deletebutton">
+	<?if(isset($button->data[img])){ ?>
+		<img src="<? echo $button->data[img]; ?>" alt="<? echo $title ?>" align="middle" class="png" width="32" height="32"/><br />
+	<?}else{ ?>
+		<img src="images/cancel_f2.png" alt="<? echo $title; ?>" align="middle" class="png" width="32" height="32"/><br />
+	<?} ?>
+	<? echo $title; ?>
+</a>

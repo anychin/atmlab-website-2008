@@ -1,0 +1,70 @@
+<div style="padding:20px 0 10px 0;">
+Фотогалерея:
+</div>
+<div id="imagecontainer2">флешка</div>
+<script type="text/javascript">
+	onInit(function(){
+		var so = new SWFObject("/admin/flash/uploader.swf", "imageuploader2", "250", "25", "9");
+		so.addParam("wmode", "opaque");
+		so.addVariable("url", "<?php echo $uploadUrl;?>?atmsession=<?echo Template::get("sessionid"); ?>");
+		so.addVariable("dataid", "<?echo $gallery->id; ?>");
+		<?php if(isset($dopVars))
+			foreach($dopVars as $key=>$value){?>
+			so.addVariable("data<?php echo $key;?>", "<?php echo $value;?>");
+		<?php } ?>
+		so.addVariable("onError", "onError");
+		so.addVariable("onUpload", "onUpload");
+		so.addVariable("multi", "true");
+		so.write("imagecontainer2");
+	});
+	function onUpload(data){
+		var d = XMLParser.deserialize(data);
+		var resizes = d.photo.image[0].resizes[0].resize;
+		var gallery = jq("#photogallery");
+		for(var i = 0; i < resizes.length; i++)
+			if(resizes[i].name == "admin"){
+				gallery.append("<div><a href='/admin/photo/photo/edit/" + d.photo.id + "'><img src='/images/uploaded/" + resizes[i].id + ".jpg' /></a><a href='/admin/photo/photo/delete/" + d.photo.id + "' class='del-photo'><img src='/admin/images/publish_x.png' class='png' /></a></div>");
+				var item = jq("div:last", gallery);
+				var b = jq(".del-photo", item);
+				b.click(function(){
+					if(!confirm("Удалить?"))
+						return false;
+					jq.get(b.attr("href") + "/?rnd=" + Math.random(), function(){
+						item.remove();
+					});
+					return false;
+				});
+			}
+	}
+	function onError(t){
+		alert("Произошла ошибка при загрузке файла");
+	}
+</script>
+<script type="text/javascript">
+	onInit(function(){
+		jq(".photo-container div").each(function(i, item){
+			item = jq(item);
+			var b = jq(".del-photo", item);
+			b.click(function(){
+				if(!confirm("Удалить?"))
+					return false;
+				jq.get(b.attr("href") + "/?rnd=" + Math.random(), function(){
+					item.remove();
+				});
+				return false;
+			});
+		});
+	});
+</script>
+<div id="photogallery" class="photo-container">
+<?
+	for($i = 0; $i < count($gallery->photos); $i++){
+		$photo = $gallery->photos[$i];
+	?>
+		<div>
+			<a href="/admin/photo/photo/edit/<?echo $photo->id; ?>?url=<?php echo $returnUrl;?>"><img src="/images/uploaded/<? echo $photo->image->resizes[admin]->id; ?>.jpg" /></a>
+			<a href="<?php echo $deleteUrl;?>/<?echo $photo->id; ?>" class="del-photo"><img src="/admin/images/publish_x.png" class="png" /></a>
+		</div>
+	<?}
+?>
+</div>

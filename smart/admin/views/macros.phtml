@@ -1,0 +1,120 @@
+<?php
+function renderDelimeter()
+{?>
+	<td>...</td>
+<?}
+
+function cutToStr($str, $len)
+{
+	if(mb_strlen($str) <=  $len)
+		$strart = $str;
+	else
+		$strart = mb_substr($str, 0, $len) . "...";	
+	return $strart;
+}
+
+function renderPage($lp, $page, $startUrl, $maxPage, $endUrl = "")
+{
+	if($lp == 0)
+	{
+		$class = "";
+		if($page == 1)
+			$class = "invisible";
+	?>
+		<td class="back <?echo $class; ?>">
+			<?if($class == ""){ ?>
+				<a href="<? echo $startUrl; ?>/page/<? echo ($page - 1).$endUrl;?>">&larr;</a>
+			<?}else{ ?>
+				&larr;
+			<?} ?>
+		</td>	
+	<?}
+	if($lp > 0 && $lp <= $maxPage)
+	{
+		if($lp == $page){?>
+			<td><? echo $lp;?></td>
+		<?}else{?>
+			<td><a href="<? echo $startUrl; ?>/page/<? echo $lp.$endUrl;?>"><? echo $lp;?></a></td>
+		<?}
+	}
+	if($lp > $maxPage)
+	{
+		$class = "";
+		if($page == $maxPage)
+			$class = "invisible";
+	?>
+		<td class="next <?echo $class; ?>">
+			<?if($class == ""){ ?>
+				<a href="<? echo $startUrl; ?>/page/<? echo ($page + 1).$endUrl;?>">&rarr;</a>
+			<?}else{ ?>
+				&rarr;
+			<?} ?>
+		</td>	
+	<?}
+}
+
+function searchLink($links, $field, $val){
+	for($i = 0; $i < count($links); $i++)
+		if($links[$i]->$field == $val)
+			return true;
+	return false;
+}
+
+
+function add_autocompele($field, $url, $vals = null, $multiple = false){?>
+<script type="text/javascript">
+	var <?=$field?>_store = {};
+	<?if($multiple){?>
+	function get_<?=$field?>(){
+		var v = jq.trim(jq("#<?=$field;?>").val());
+		var vals = v.split(",");
+		var ids = [];
+		for(var i = 0; i < vals.length; i++){
+			var id = <?=$field?>_store[jq.trim(vals[i])];
+			if(id && jq.inArray(id, ids) < 0)
+				ids.push(id);
+		} 
+		return ids.join(",");
+	}
+	<?}else{?>
+	function get_<?=$field?>(){
+		var v = jq.trim(jq("#<?=$field;?>").val());
+			if(<?=$field?>_store[v])
+				return <?=$field?>_store[v];
+		return null;
+	}
+	<?}?>
+	onInit(function(){
+		jq("#<?=$field?>").autocomplete("<?=$url?>", {
+		autoFill:true,
+		minChars:2,
+		<?if($multiple){?>
+		multiple:true,
+		<?}?>
+		dataType: "json",
+		parse: function(data) {
+			return jq.map(data, function(row) {
+				return {
+					data: row,
+					value: row.id,
+					result: row.name
+				}
+			});
+		},
+		formatItem: function(item) {
+			return item.name;
+		}
+	}).result(function(e, data){
+		<?=$field?>_store[data.name] = data.id;
+	});
+});
+<?if($vals && !$multiple){?>
+	<?=$field?>_store['<?=$vals['name'];?>'] = <?=$vals['id'];?>;
+<?}?>
+<?if($multiple){
+	foreach($vals['name'] as $i => $name){?>
+	<?=$field?>_store['<?=$name;?>'] = <?=$vals['id'][$i];?>;
+<?}}?>
+</script>
+<?}
+?>

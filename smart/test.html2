@@ -1,0 +1,901 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Онлайн КАТАЛОГ Собственников</title>
+<meta name='yandex-verification' content='7038b72b605f0a24' />
+<meta name="google-site-verification" content="d4PkR6kJBc1iz-uz2gcvlknEePkfUbR7NpVUUESrsgM" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://infomiran.ru/css/style.css" rel="stylesheet" type="text/css">
+
+	<!--[if lte IE 6]>
+		<style type="text/css" media="screen, tv, projection">
+			body { behavior: url(./js/behavior/csshover.htc); } /* hover:anything support */
+		</style>
+		<script type="text/javascript" src="./js/behavior/sleight.js"></script> 
+		<style type="text/css">
+			.mnu { filter:expression(fixPNG(this)); }
+		</style>
+	<![endif]-->
+
+<script type="text/javascript" src="http://infomiran.ru/js/jquery.min.js"></script> 
+<script type="text/javascript" src="http://infomiran.ru/js/scripts.js"></script>
+
+<script type="text/javascript" src="./js/highslide/highslide.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./js/highslide/highslide.css" />
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="./js/highslide/highslide-ie6.css" />
+<![endif]-->
+
+<script type="text/javascript">
+hs.registerOverlay({
+	html: '<div class="closebutton" onclick="return hs.close(this)" title="Close"></div>',
+	position: 'top right',
+	fade: 2 // fading the semi-transparent overlay looks bad in IE
+});
+hs.graphicsDir = './js/highslide/graphics/';
+hs.wrapperClassName = 'borderless';
+</script>
+
+
+<body>
+<div class="top"><div class="logo"></div>
+<h1>ЕДИНАЯ БАЗА ДАННЫХ по АРЕНДЕ КВАРТИР и КОМНАТ от СОБСТВЕННИКОВ ЖИЛЬЯ МОСКВЫ и ПОДМОСКОВЬЯ</h1>
+</div>
+<div id="layer1"></div>
+<div id="layer2"></div>
+<div id="layer3"></div>
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+<td class="phone"><div class="phoneimg"> +7 (495) 767-29-41</div></td>
+<td class="tmenu" valign="top">
+
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tr bgcolor="#eae8e8">
+    <td valign="top" rowspan="2"><div class="lmenu"></div></td>
+    <td valign="top"><div class="empty"></div></td>
+    <td class="other"><a href="/">Главная</a></td><td class="other">/</td>
+    <td class="other"><a href="./index.php?id=22" >О&nbsp;проекте</a></td><td class="other">/</td>
+    <td class="other"><a href="./index.php?id=44" >Тарифы</a></td><td class="other">/</td>
+    <!--<td class="other"><a href="./index.php?id=24" >Льготная&nbsp;комиссия</a></td><td class="other">/</td>-->
+    <td class="other"><a href="./index.php?id=49" >Разместить&nbsp;объявление</a></td><td class="other">/</td>
+    <td class="other"><a href="./index.php?id=26" >Обратная&nbsp;связь</a></td><td class="other">/</td>
+    <td class="other"><a href="./index.php?id=23" >Договора&nbsp;аренды</a></td><td class="other"></td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="15" style="border-top: 1px solid #9e070e;"><div class="mtop"></div></td>
+  </tr>
+  </table>
+</td>
+</tr>
+</table>
+
+<table cellspacing="0" cellpadding="5" border="0" width="100%">
+<tr>
+<td valign="top">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#E7E7E7">
+<tr>
+<td valign="top" width="1"><div class="c1"></div></td>
+<td valign="top" class="t1"></td>
+<td valign="top" width="1"><div class="c2"></div></td>
+</tr>
+<tr>
+<td valign="top" class="l1"></td>
+<td valign="top">
+<div style="float:left">
+<form action="./index.php?id=17" method="post" name="search"  class="order">
+<div class="metrownd" id="metrownd" name="metro" style="display:none;"><div class="map"><script language="javascript">
+<!--
+document.write(''+'<table width="100%"><tr><td align=center><table width="300"><tr><td align=right><div class="closemap" id="closemap" style="display:none;"><a href="javascript:void(0)" onclick="show(\'metrownd\')"><div class="aclosemap"></div></a></div></td></tr><tr><td><div id=metromap name=metromap align=center style="relative">'+'<img id="mskmap" src="./images/mskmap.gif" usemap="#map" border="0">'+'</div></td></tr></table></td><tr></table><br>'+'');
+//a = document.all;
+
+//сделаем вывод карты
+document.write('<map name="map">');
+for(i in metro) {
+  //alert(metro[i][0]);
+  s = "<area shape=rect coords='";
+  s+=metro[i][3]+","+metro[i][4]+","+metro[i][5]+","+metro[i][6];
+  s+="' onclick='checkpoint("+i+");' title='"+metro[i][1]+"' onmouseover=\"document.body.style.cursor='hand';\" onmouseout=\"document.body.style.cursor='default';\">";
+  document.write(s);
+}
+for(i in line) {
+  //alert(metro[i][0]);
+  s = "<area shape=rect coords='";
+  s+=line[i][1]+","+line[i][2]+","+line[i][3]+","+line[i][4];
+  s+="' onclick='checkLine("+i+");' title='выделить всю ветку' onmouseover=\"document.body.style.cursor='hand';\" onmouseout=\"document.body.style.cursor='default';\">";
+  document.write(s);
+}
+document.write('</map>');
+//массив маркеров
+mimg = new Array();
+for(i in metro){
+  if(metro[i]){
+   mimg[i] = document.createElement("IMG");
+   mimg[i].src = "./images/mpic.gif";
+   mimg[i].alt = metro[i][1];
+   mimg[i].style.position = "absolute"; //
+   mimg[i].style.left = metro[i][7]+1+'px';
+   mimg[i].style.top = metro[i][8]+62+1+'px';
+   mimg[i].style.cursor = "hand";
+   mimg[i].onclick = new Function("checkpoint("+i+")");
+  }
+}
+//массив выбранных станций
+selected = new Array();
+move();
+//-->
+</script></div></div>
+<table class="block">
+<tr>
+<td>
+<input type="radio" name="ad_type" id="at1" value="1"  /> <label for="at1">поиск Клиента</label>
+</td>
+<td>
+<input type="checkbox" name="room0"  id="room0" /><label for="room0">комната</label>&nbsp;
+<input type="checkbox" name="room1"  id="one" /><label for="one">1</label>&nbsp;
+<input type="checkbox" name="room2"  id="two" /><label for="two">2</label>&nbsp;
+<input type="checkbox" name="room3"  id="three" /><label for="three">3</label>&nbsp;
+<input type="checkbox" name="room4" " id="many" /><label for="many">4 ></label></td>
+</td>
+<td><a href="./index.php?id=17&ad_type=1">Онлайн <b>КАТАЛОГ</b> Клиентов</a></td>
+</tr>
+
+<tr>
+<td><input type="radio" name="ad_type" id="at2" value="0" checked /> <label for="at2">поиск Жилья</label></td>
+<td>
+Сдает <input type="checkbox" name="utype0" id="utype0"  /><label for="utype0">собственник</label>&nbsp;<input type="checkbox" name="utype1" id="utype1"  /><label for="utype1">агентство</label>
+</td>
+<td><a href="./index.php?id=17&ad_type=0&utype0=on">Онлайн <b>КАТАЛОГ</b> Собственников</a></td>
+</tr>
+
+<tr>
+<td>Цена от <input type="text" name="price1" class="price" value="0"  /> до <input type="text" name="price2" class="price" value="0" />  </td>
+<td><div class="ametro"><a href="javascript:void(0)" onclick="show('metrownd')">Выбрать станцию метро</a></div></td>
+<td> <input type="image" src="./images/search.jpg" /></td>
+<td>
+<div style="display:none;">
+<select style="width:240" id=metro_list name=metro_list[] size=14 multiple onclick="this.options[this.options.selectedIndex].selected=true"><option>ВЫБРАННЫЕ СТАНЦИИ МЕТРО:</select>
+</div>
+</td>
+</tr>
+</table>
+<input type="hidden" name="act" value="search" />
+</form>
+</div>
+<div style="float:right">
+<table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td>
+
+
+<form action="http://www.infomiran.ru//index.php" method="post" name="flogin">
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td colspan="3" align="left"><b>Авторизация пользователя</b></td></tr>
+
+<tr><td align="left"><input type="text" name="login" class="auth" /></td>
+    <td><input type="password" name="password" class="auth" /></td>
+    <td><input type="image" src="./images/ok.jpg" /></td>
+</tr>
+
+<tr><td align="right"><a href="./index.php?id=16">Забыли пароль?</a></span></td>
+    <td align="left"><a href="./index.php?id=13">Регистрация</a></td>
+    <td align="left">&nbsp;</td>
+</tr>
+</table>
+
+<input type="hidden" name="type" value="1" />
+<input type="hidden" name="act" value="auth" />
+<input type="hidden" name="redirect" value="" />
+</form>
+
+</td>
+</tr>
+</table></div>
+</td>
+<td valign="top" class="r1"></td>
+</tr>
+<tr>
+<td valign="top" width="1"><div class="c4"></div></td>
+<td valign="top" class="b1"></td>
+<td valign="top" width="1"><div class="c3"></div></td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td valign="top">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#ececec">
+<tr>
+<td valign="top" width="1"><div class="c1"></div></td>
+<td valign="top" class="t1"></td>
+<td valign="top" width="1"><div class="c2"></div></td>
+</tr>
+<tr>
+<td valign="top" class="l1"></td>
+<td valign="top">Страницы: <span class='p'> <a href=./index.php?id=17&sort=date&dir=desc&p=1 style='text-decoration:underline;'>1</a>&nbsp; | <span class='cur_p'>&nbsp;2&nbsp;</span> | <a href=./index.php?id=17&sort=date&dir=desc&p=3 style='text-decoration:underline;'>3</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=4 style='text-decoration:underline;'>4</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=5 style='text-decoration:underline;'>5</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=6 style='text-decoration:underline;'>6</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=7 style='text-decoration:underline;'>7</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=8 style='text-decoration:underline;'>8</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=9 style='text-decoration:underline;'>9</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=10 style='text-decoration:underline;'>10</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=11 style='text-decoration:underline;'>11</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=12 style='text-decoration:underline;'>12</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=13 style='text-decoration:underline;'>13</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=14 style='text-decoration:underline;'>14</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=15 style='text-decoration:underline;'>15</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=16 style='text-decoration:underline;'>16</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=17 style='text-decoration:underline;'>17</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=18 style='text-decoration:underline;'>18</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=19 style='text-decoration:underline;'>19</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=20 style='text-decoration:underline;'>20</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=21 style='text-decoration:underline;'>21</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=22 style='text-decoration:underline;'>22</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=23 style='text-decoration:underline;'>23</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=24 style='text-decoration:underline;'>24</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=25 style='text-decoration:underline;'>25</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=26 style='text-decoration:underline;'>26</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=27 style='text-decoration:underline;'>27</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=28 style='text-decoration:underline;'>28</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=29 style='text-decoration:underline;'>29</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=30 style='text-decoration:underline;'>30</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=31 style='text-decoration:underline;'>31</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=32 style='text-decoration:underline;'>32</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=33 style='text-decoration:underline;'>33</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=34 style='text-decoration:underline;'>34</a>&nbsp; | <a href=./index.php?id=17&sort=date&dir=desc&p=35 style='text-decoration:underline;'>35</a>&nbsp;</span>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr>
+<th width="30">id</th>
+<th style="border-left:1px solid #cccccc;" width="100">Дата размещения</th>
+<th style="border-left:1px solid #cccccc;" width="30">Комнат</th>
+<th style="border-left:1px solid #cccccc;" width="250"><a href="./index.php?id=17&sort=utype&dir=asc&p=">Метро</a> <img src="./images/empty.gif"></th>
+<th style="border-left:1px solid #cccccc;" width="80">Площадь<br/>общ/жил</th>
+<th style="border-left:1px solid #cccccc;" width="40">кухня</th>
+<th style="border-left:1px solid #cccccc;" width="30">Этаж</a></th>
+<th style="border-left:1px solid #cccccc;" width="100">Доп. сведения</a></th>
+<th style="border-left:1px solid #cccccc;" width="80"><a href="./index.php?id=17&sort=price1&dir=asc&p=">Цена</a> <img src="./images/empty.gif"></th>
+<th style="border-left:1px solid #cccccc;" width="120">Контакты</th>
+<th style="border-left:1px solid #cccccc;">Комментарии</th>
+</tr>
+<tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">51<!--10994--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=62&p=1'><b style='color: #000099;'>ЮГО-ЗАПАДНАЯ</b></a><br/>Боровский проезд</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/4</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10994, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10994, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> комната для одной женщины не курящей. вся бытовая техника, мебель.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">52<!--10997--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 минут пешком<br/><a href='./index.php?id=17&filter=metro&fid=38&p=1'><b style='color: #000099;'>РЕЧНОЙ ВОКЗАЛ</b></a><br/>Конаковский проезд</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/15</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10997, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10997, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдам комнату для одной или двоих девушек. квартира с холодильником и стиральной мебелью. на кухне гарнитур. в комнате вся необходимая мебель, телевизор.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">53<!--11000--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=18&p=1'><b style='color: #000099;'>РИЖСКАЯ</b></a><br/>Анненская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/15</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11000, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11000, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> рассмотрю ДО ТРЕХ ЧЕЛОВЕК. комната со всей мебелью, холодильник на кухне. в ванной комнате стиральная машинка. комната с телевизором. в квартире есть телефон. санузел раздельный.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">54<!--11002--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 минут пешком<br/><a href='./index.php?id=17&filter=metro&fid=18&p=1'><b style='color: #000099;'>РИЖСКАЯ</b></a><br/>Марьина Роща</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">1/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11002, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11002, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> маленькая и уютная комната для одной женщине. в квартире есть стиральная машинка. мебель наборная. санузел совмещенный, квартира после косметического ремонта.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">55<!--11003--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Люберцы город</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">11/14</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11003, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11003, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> просторная комната только для одной девушке. беру залоговую сумму за комнату. комната со всей необходимой для проживания мебелью. стиральная машинка есть. на кухне холодильник.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">56<!--11005--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=20&p=1'><b style='color: #000099;'>ВДНХ</b></a><br/>Академика Королёва улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11005, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11005, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> комнату сдам только для одного человека. комната с гарнитурной современной мебелью, вся необходимая бытовая техника. туалет и ванная раздельные, квартира после косметического ремонта.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">57<!--11007--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=20&p=1'><b style='color: #000099;'>ВДНХ</b></a><br/>Ярославское шоссе</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11007, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11007, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> предлагаю комнату строго для семейной пары. квартира чистая, ухоженная. не так давно был произведен косметический ремонт. мебель гарнитурная, холодильник, стиральная машинка присутствует, раздельный санузел. </td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">58<!--11010--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8 минут пешком<br/><a href='./index.php?id=17&filter=metro&fid=36&p=1'><b style='color: #000099;'>ВОЙКОВСКАЯ</b></a><br/>проезд Черепановых</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11010, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11010, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдается строго для РОССИЯН. квартира чистая, стиральная машинка, наборная мебель.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">59<!--11013--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Самаркандский б-р</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/14</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11013, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11013, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> если для одной девушке, то сдам за 8000 рублей, если для двух девушек, то сдам за 10000 рублей. мебель в квартире и комнате гарнитурная. телевизор. холодильник, стиральная машинка импортная.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">60<!--11016--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 минут пешком<br/><a href='./index.php?id=17&filter=metro&fid=26&p=1'><b style='color: #000099;'>ДМИТРОВСКАЯ</b></a><br/>Вятская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">18000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11016, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11016, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдаю комнату для одной или для двух девушек или для одного мужчины. комната с мебелью. в квартире в общем пользовании есть вся необходимая бытовая техника.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">61<!--11019--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Косинская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">13000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11019, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11019, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдаю комнату исключительно для семейной пары или для двух женщин. бытовая техника(холодильник, стиральная машинка). мебель хорошая.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">62<!--11021--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Аллея Жемчуговой улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/13</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">1/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">13000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11021, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11021, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> комната для одного человека. вся мебель, вся бытовая техника.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">63<!--11024--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Лермонтовский проезд</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11024, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11024, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> оплата за аренду комнаты сразу за 2 месяца. просторная комната, телевизор, мебель - гарнитур. в квартире холодильник, стиральная машинка. ЕВРОРЕМОНТ.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">64<!--11026--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Ташкентская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11026, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11026, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдам комнату только для одного мужчины - россиянину. комната с современной мебелью, гарнитур. холодильник, стиральная машинка, телевизор.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">65<!--11029--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">21.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=108&p=1'><b style='color: #000099;'>КУЗЬМИНКИ</b></a><br/>Жулебино</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12/24</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11029, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11029, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдам комнату для одной женщины. холодильник, стиральная машинка. мебель</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">66<!--11256--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 пешком<br/><a href='./index.php?id=17&filter=metro&fid=53&p=1'><b style='color: #000099;'>КУНЦЕВСКАЯ</b></a><br/>Ращупкина</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/16</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000<br/><span style='color:#9e070e;'><b>Комиссия:</b></span><br/><span style='color:#9e070e;'><b>50%</b></span></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"> (963)6565377<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #000099;'><Агентство></b> Сдается квартира после косметического ремонта. Полы паркет. Застекленный балкон. Комнаты пустые. На кухне минимум. Вся бытовая техника. Санузе раздельный. Сантехника в отличном состоянии. Металлическая дверь.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">67<!--11253--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=29&p=1'><b style='color: #000099;'>ВЛАДЫКИНО</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">26000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11253, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11253, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Для СП+ребёнок 1 год.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">68<!--11251--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 мин пешком<br/><a href='./index.php?id=17&filter=metro&fid=126&p=1'><b style='color: #000099;'>БАРРИКАДНАЯ</b></a><br/>Большая Грузинская</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/15</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/4</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">17000<br/><span style='color:#9e070e;'><b>Комиссия:</b></span><br/><span style='color:#9e070e;'><b>50%</b></span></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"> (916)2314342<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #000099;'><Агентство></b> комната в коммуналке простая и чистая рассмотрим 3-х человек национальность обсуждается</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">69<!--11245--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">1</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=3&p=1'><b style='color: #000099;'>ПЕРОВО</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">23000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11245, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11245, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Нужна квартира для сп. Прописка Владимир</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">70<!--11244--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">1</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=43&p=1'><b style='color: #000099;'>ЩУКИНСКАЯ</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">24000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11244, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11244, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Нужна квартира для СП. Прописка Киров. От Щукинской до Тушенской.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">71<!--11243--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=103&p=1'><b style='color: #000099;'>БРАТИСЛАВСКАЯ</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">13000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11243, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11243, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Нужна комната для СП. Славяне</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">72<!--11242--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">1</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=100&p=1'><b style='color: #000099;'>ПЕЧАТНИКИ</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">23000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11242, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11242, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Нужна квартира для сп. Славяне.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">73<!--11185--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=44&p=1'><b style='color: #000099;'>ТУШИНСКАЯ</b></a><br/>Павшинская пойма</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">56/21</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/17</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">28000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11185, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11185, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">74<!--11187--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=44&p=1'><b style='color: #000099;'>ТУШИНСКАЯ</b></a><br/>Игната Титова улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">13/17</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11187, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11187, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">75<!--11189--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 пешком<br/><a href='./index.php?id=17&filter=metro&fid=17&p=1'><b style='color: #000099;'>УЛИЦА ПОДБЕЛЬСКОГО</b></a><br/>Бойцовая улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">32000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11189, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11189, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">76<!--11196--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">30 тр.<br/><a href='./index.php?id=17&filter=metro&fid=12&p=1'><b style='color: #000099;'>ЩЕЛКОВСКАЯ</b></a><br/>Г. Щелково</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/21</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">17000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11196, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11196, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">77<!--11198--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=12&p=1'><b style='color: #000099;'>ЩЕЛКОВСКАЯ</b></a><br/>г. Балашиха</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/19</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5/17</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11198, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11198, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">78<!--11199--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=12&p=1'><b style='color: #000099;'>ЩЕЛКОВСКАЯ</b></a><br/>9-го Мая</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/4</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">23000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11199, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11199, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">79<!--11202--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 пешком<br/><a href='./index.php?id=17&filter=metro&fid=43&p=1'><b style='color: #000099;'>ЩУКИНСКАЯ</b></a><br/>Врачебный проезд</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11202, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11202, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после евро ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">80<!--11203--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 пешком<br/><a href='./index.php?id=17&filter=metro&fid=43&p=1'><b style='color: #000099;'>ЩУКИНСКАЯ</b></a><br/>жк. Алые Паруса</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">120/90</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">28/30</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">130000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11203, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11203, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после евро ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">81<!--11204--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=62&p=1'><b style='color: #000099;'>ЮГО-ЗАПАДНАЯ</b></a><br/>мкр. Солнцево</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">56/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">36000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11204, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11204, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">82<!--11205--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>г. Балашиха</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11205, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11205, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">83<!--11206--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>г. Люберцы</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11206, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11206, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">84<!--11207--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>г. Жуковский</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/19</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">27000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11207, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11207, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после евро ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">85<!--11208--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>п. Октябрьский</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">27000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11208, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11208, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">86<!--11209--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>Некрасовская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">70/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7/17</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11209, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11209, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">87<!--11210--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>г. Люберцы</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14/17</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">36000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11210, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11210, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">88<!--11211--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=110&p=1'><b style='color: #000099;'>ВЫХИНО</b></a><br/>г.Люберцы</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">60/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">40000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11211, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11211, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">89<!--11212--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=24&p=1'><b style='color: #000099;'>МЕДВЕДКОВО</b></a><br/>г. Мытищи</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">70/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">6/12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11212, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11212, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">90<!--11213--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20 пешком<br/><a href='./index.php?id=17&filter=metro&fid=11&p=1'><b style='color: #000099;'>ПЕРВОМАЙСКАЯ</b></a><br/>Челябинская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">75/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14/16</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">35000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11213, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11213, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">91<!--11214--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=28&p=1'><b style='color: #000099;'>ПЕТРОВСКО-РАЗУМОВСКАЯ</b></a><br/>Дубнинская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">66/19</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">36000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11214, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11214, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">92<!--11215--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 пешком<br/><a href='./index.php?id=17&filter=metro&fid=52&p=1'><b style='color: #000099;'>ПИОНЕРСКАЯ</b></a><br/>Кастанаевская улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">90/66</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12/22</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">70000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11215, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11215, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после евро ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">93<!--11216--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">25 транспортом<br/><a href='./index.php?id=17&filter=metro&fid=38&p=1'><b style='color: #000099;'>РЕЧНОЙ ВОКЗАЛ</b></a><br/>г.Зеленоград.</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">50/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">11/14</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">30000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11216, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11216, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">94<!--11217--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10 пешком<br/><a href='./index.php?id=17&filter=metro&fid=14&p=1'><b style='color: #000099;'>СОКОЛЬНИКИ</b></a><br/>Гастелло улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">75/19</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">12</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">11/11</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">75000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11217, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11217, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после евро ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. </td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">95<!--11223--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3 пешком<br/><a href='./index.php?id=17&filter=metro&fid=129&p=1'><b style='color: #000099;'>АРБАТСКАЯ</b></a><br/>Знаменка улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">125/100</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">130000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11223, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11223, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Квартира после косметического ремонта. Мебель гарнитурная. Вся бытовая техника. Санузел раздельный. Длительная аренда.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">96<!--11239--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='./index.php?id=17&filter=metro&fid=4&p=1'><b style='color: #000099;'>НОВОГИРЕЕВО</b></a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">27000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (11239, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (11239, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #006600;'><Клиент></b> Нужна квартира для сп + мать и сын 15 лет. Прописка М.О. Виталий.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">97<!--10919--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">8 минут пешком<br/><a href='./index.php?id=17&filter=metro&fid=107&p=1'><b style='color: #000099;'>ТЕКСТИЛЬЩИКИ</b></a><br/>Саратовская ул.</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/15</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">2/5</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">16000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10919, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10919, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> Евроремонт в квартире. вся бытовая техника, стиральная машинка, холодильник, вся бытовая техника, телевизор. сдаю комнату строго для одного человека.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">98<!--10920--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=71&p=1'><b style='color: #000099;'>ТЕПЛЫЙ СТАН</b></a><br/>Теплый Стан улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/10</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">4/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">13500</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10920, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10920, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдаю комнату для одного квартиранта. в комнате вся мебель современная, гарнитурная. в комнате так же есть телевизор. в общем пользовании холодильник и стиральная машинка. БЕЗ ХОЗЯЕВ.</td>
+</tr><tr bgcolor="#ECECEC">
+<td style="border-top:1px solid #cccccc;">99<!--10921--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">5 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=71&p=1'><b style='color: #000099;'>ТЕПЛЫЙ СТАН</b></a><br/>Одоевского улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/18</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">3/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">16000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10921, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10921, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> комната с проживанием без хозяев. сдаю семейной паре. мебель, бытовая техника.</td>
+</tr><tr bgcolor="#E6E6E6">
+<td style="border-top:1px solid #cccccc;">100<!--10922--></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">20.04.2010</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">15 минут транспортом<br/><a href='./index.php?id=17&filter=metro&fid=124&p=1'><b style='color: #000099;'>КИЕВСКАЯ</b></a><br/>Довженко улица</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">0/20</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">7</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">9/9</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">мебель<br/>телефон<br/></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc">14000</td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><a href='javascript:void (0)' onclick='send_request (10922, "layer2", "contactinfo.php")' title='Показать'>Показать</a><br/><a href='javascript:void (0)' onclick='send_request (10922, "layer2", "deactivate.php")' title='Удалить из базы'>Удалить&nbsp;из&nbsp;базы</a></td>
+<td style="border-left:1px solid #cccccc;border-top:1px solid #cccccc"><b style='color: #9e070e;'><Собственник></b> сдаю комнату для одной девушке, славянской внешности и российского гражданства. квартира после косметического ремонта, комната с наборной мебелью, холодильник, стиральная машинка, телевизор.</td>
+</tr>
+</table>
+<!--<table align="right"><tr><td><div class="btnbg"><a href="javascript:void(0)" onclick="send_request(20, 'layer2', 'load_page.php')">Подать заявку</a></div></td></tr></table>-->
+<a href="./index.php?id=59">Архив объявлений</a></td>
+<td valign="top" class="r1"></td>
+</tr>
+<tr>
+<td valign="top" width="1"><div class="c4"></div></td>
+<td valign="top" class="b1"></td>
+<td valign="top" width="1"><div class="c3"></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div style="display:none"><script language="javascript">
+<!--
+document.write(''+'<table width="100%"><tr><td align=center><table width="300"><tr><td align=right><div class="closemap" id="closemap" style="display:none;"><a href="javascript:void(0)" onclick="show(\'metrownd\')"><div class="aclosemap"></div></a></div></td></tr><tr><td><div id=metromap name=metromap align=center style="relative">'+'<img id="mskmap" src="./images/mskmap.gif" usemap="#map" border="0">'+'</div></td></tr></table></td><tr></table><br>'+'');
+//a = document.all;
+
+//сделаем вывод карты
+document.write('<map name="map">');
+for(i in metro) {
+  //alert(metro[i][0]);
+  s = "<area shape=rect coords='";
+  s+=metro[i][3]+","+metro[i][4]+","+metro[i][5]+","+metro[i][6];
+  s+="' onclick='checkpoint("+i+");' title='"+metro[i][1]+"' onmouseover=\"document.body.style.cursor='hand';\" onmouseout=\"document.body.style.cursor='default';\">";
+  document.write(s);
+}
+for(i in line) {
+  //alert(metro[i][0]);
+  s = "<area shape=rect coords='";
+  s+=line[i][1]+","+line[i][2]+","+line[i][3]+","+line[i][4];
+  s+="' onclick='checkLine("+i+");' title='выделить всю ветку' onmouseover=\"document.body.style.cursor='hand';\" onmouseout=\"document.body.style.cursor='default';\">";
+  document.write(s);
+}
+document.write('</map>');
+//массив маркеров
+mimg = new Array();
+for(i in metro){
+  if(metro[i]){
+   mimg[i] = document.createElement("IMG");
+   mimg[i].src = "./images/mpic.gif";
+   mimg[i].alt = metro[i][1];
+   mimg[i].style.position = "absolute"; //
+   mimg[i].style.left = metro[i][7]+1+'px';
+   mimg[i].style.top = metro[i][8]+62+1+'px';
+   mimg[i].style.cursor = "hand";
+   mimg[i].onclick = new Function("checkpoint("+i+")");
+  }
+}
+//массив выбранных станций
+selected = new Array();
+move();
+//-->
+</script></div>
+
+<div class="bottom">
+<span style="float:left;padding-top:8px;">Copyright © 2009 МИРАН</span>
+<span style="float:right"><!--Openstat-->
+<span id="openstat2064940"></span><script type="text/javascript"> var openstat = { counter: 2064940, next: openstat , track_links: "all" }; document.write(unescape("%3Cscript%20src=%22http" +
+(("https:" == document.location.protocol) ? "s" : "") +
+"://openstat.net/cnt.js%22%20defer=%22defer%22%3E%3C/script%3E")); </script>
+<!--Openstat--></span>
+</div>
+</body>
+</html><!--0.192475-->

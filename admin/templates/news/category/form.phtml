@@ -1,0 +1,42 @@
+<?
+$category = Template::get("category");
+?>
+<script type="text/javascript">
+	function getUrl(item){
+		var url = jq.trim(jq("input", item).val());
+		if(url.length < 1)
+			return url;
+		if(url.charAt(0) == '/')
+			url = url.substr(1, url.length);
+		return url;
+	}
+	function onCategorySave(d, data){
+		showOk();
+	}
+</script>
+<div class="form" id="categoryform">
+	<div class="annotation">name=news/categories,onSuccess=onCategorySave</div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $category->id;?>" /></span>
+	<table>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,value=getUrl,error.required=Обязательно к заполнению,error.not.unique=URL-адрес уже существует</div>
+				URL на сайте
+			</td>
+			<td>
+				<input type="text" name="url" value="<? echo $category->url;?>" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,error.required=Обязательно к заполнению</div>
+				Название&nbsp;категории
+			</td>
+			<td>
+				<textarea name="name" style="height:30px;"><? echo stripslashes($category->name);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+	</table>
+</div>

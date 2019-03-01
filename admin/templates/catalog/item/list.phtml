@@ -1,0 +1,83 @@
+<?
+$atoms = array();
+if(Template::get("category")){
+	$category = Template::get("category");
+	$atoms = explode(".", $category->code);
+}
+if(Template::get("okCategory")){
+	$category = Template::get("okCategory");
+	$atoms = explode(".", $category->code);
+}
+function printCategories($parent = 0, $atoms)
+{
+	$categories = Template::get("categories");
+	$cat = Template::get("category");
+	if(count($categories) == 0)
+		return;
+	foreach($categories[$parent] as $category)
+	{	
+		$inPath = false;
+		if($atoms[0] == $category->code && $atoms[0] != $cat->code){
+			$a = $atoms[0];
+			$inPath = true;
+			$atoms = ArrayUtil::splice($atoms, 1);
+			$atoms[0] = $a.".".$atoms[0];
+		}
+	?>
+		<table class="item" id="category<? echo $category->id; ?>">
+			<tr>
+				<td class="plus" id="plus<? echo $category->id; ?>">
+					<?if(count($categories[$category->id]) > 0){
+						$minusStyle = $plusStyle = "";
+						if($inPath)
+							$plusStyle = "display:none;";
+						else 
+							$minusStyle = "display:none;";
+					?>
+					<img src="/admin/images/plus.gif" onclick="CatalogCategory.plus(<?echo $category->id; ?>);" alt=""  width="9" height="9" style="<? echo $plusStyle; ?>"/>
+					<img src="/admin/images/minus.gif" onclick="CatalogCategory.minus(<?echo $category->id; ?>);"  alt="" width="9" height="9" style="<?echo $minusStyle; ?>"/>
+					<?}?>
+				</td>
+				<td class="title"><a href="/admin/catalog/<?echo $category->url; ?>"><? echo stripslashes($category->name); ?></a></td>
+				<td class="buttons">
+					
+				</td>
+			</tr>
+		</table>
+		<?if(count($categories[$category->id]) > 0){
+			$vis = "";
+			if($inPath)
+				$vis = "display:block;";
+			?>
+			<table class="sub" id="sub<?echo $category->id; ?>" style="<?echo $vis; ?>">
+				<tr>
+					<td class="sub-td"><?printCategories($category->id, $atoms); ?></td>
+				</tr>
+			</table>
+		<?} ?>
+	<?}
+}
+?>
+<table class="catalog-content">
+	<tr>
+		<td class="left-panel" style="width:300px;">
+			<table class="all" style="width:300px;">
+				<tr>
+					<td class="all">
+						<?printCategories(0, $atoms);?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="right-panel">
+			<?if(Template::get("form")){?>
+				<div class="wrap">	
+				<?include 'form.phtml';?>
+				</div>
+			<?}
+			else
+				include 'items.phtml';	
+				?>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,74 @@
+		<div class="menu">
+			<div class="item">
+				<div class="t">
+					<a href="/poets" title="Поэты"><img class="png" src="/images/title-persona.png" alt="Поэты" width="63" height="17"/></a>
+					<a class="c" href="/poets" title="Поэты">(<?=$this->count_poets; ?>)</a>
+				</div>
+				<div class="input">
+					<i class="l"></i><input id="poet" type="text" /><i class="r"></i>
+				</div>
+			</div>	
+			<div class="item">
+				<div class="t">
+					<a href="/poetry" title="Стихи"><img src="/images/title-name.png" alt="Стихи" width="95" height="17"/></a>
+					<a class="c" href="/poetry" title="Стихи">(<?=$this->count_poetry; ?>)</a>
+				</div>
+				<div class="input">
+					<i class="l"></i><input id="poetry" type="text" /><i class="r"></i>
+				</div>
+			</div>
+			<div class="item">
+				<div class="t">
+					<a href="/style" title="Жанры"><img src="/images/title-janr.png" alt="Жанры" width="75" height="21" style="margin-bottom: 12px;"/></a>
+					<a class="c" href="/style" title="Жанры">(<?=$this->count_style; ?>)</a>
+				</div>
+				<div class="input">
+					<i class="l"></i><input id="style" type="text" /><i class="r"></i>
+				</div>
+			</div>						
+			<div class="clear"></div>
+		</div>
+		<div class="general-catalog">
+			<div class="item">
+				<?foreach($this->poets as $p){?>
+				<div><a href="/poets/<?=$p->latin; ?>" title=""><?=$p->lname.' '.$p->fname;?></a></div>
+				<?}?>							
+				<div class="more"><a href="/poets">Посмотреть всех</a></div>
+			</div>
+			<div class="item">
+				<?foreach($this->poetry as $p){?>
+				<div><a href="/poetry/<?=$p->id; ?>" title=""><?=cutToStr($p->title, 22);?></a></div>
+				<?} ?>									
+				<div class="more"><a href="/poetry">Читать остальные</a></div>				
+			</div>
+			<div class="item">
+				<?foreach($this->style as $s){?>
+				<div><a href="/style/<?=$s->id; ?>" title=""><?=$s->name; ?></a></div>
+				<?} ?>									
+				<div class="more"><a href="/style">Тут больше</a></div>				
+			</div>						
+		</div>
+		<div class="clear"></div>
+		<div class="scan">
+			<div class="scan-header"><h1><?=$this->general_poetry[0]->title; ?></h1></div>
+			<div class="scan-content">
+				<div class="info">
+					<h2><?=$this->general_poet->lname.' '.$this->general_poet->fname.' '.$this->general_poet->pname; ?></h2>
+					<p><?=$this->general_poet->short_text;?></p>
+					<?if($this->general_poet->image){?>
+					<a href=" title=""><img src="/images/uploaded/small<?=$this->general_poet->image;?>.jpg" alt=""/></a>
+					<?} ?>
+					<div class="links">
+						<a href="<?=$this->general_poet->wikiurl;?>" title="">О поэте в WiKi</a><br/>
+						<a href="/poets/<?=$this->general_poet->id;?>/allpoetry" title="">Cписок произведений</a>
+					</div>
+				</div>
+				<div class="text">
+					<?=$this->general_poetry[0]->text; ?>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+<?add_autocompele('poet', '/search/rpoets', "/poets/", "latin"); ?>
+<?add_autocompele('poetry', '/search/rpoetry', "/poetry/"); ?>
+<?add_autocompele('style', '/search/rstyle', "/style/"); ?>

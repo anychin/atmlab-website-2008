@@ -1,0 +1,43 @@
+<?
+	$projects = Template::get("projects");
+	$category = Template::get("category");
+	if(count($projects) > 0){
+?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Название</td>
+		<td class="publish">&nbsp;</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($projects); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="project<? echo $projects[$i]->id; ?>" <? echo $style;?>>
+		<td class="title"><a href="/admin/projects/<? echo $category->url;?>/edit/<? echo $projects[$i]->id;?>"><? echo stripslashes($projects[$i]->name);?></a></td>
+		<td class="publish">
+			<?
+			if($projects[$i]->published == 1){
+            ?>
+            	<img src="images/spacer.gif" class="publ" onclick="Projects.publ(<?echo $projects[$i]->id; ?>);" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="Projects.unpubl(<?echo $projects[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Скрыто" />
+            <? }else{?>
+            	<img src="images/spacer.gif" class="publ" onclick="Projects.publ(<?echo $projects[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="Projects.unpubl(<?echo $projects[$i]->id; ?>);" width="12" height="12" alt="Скрыто " />
+            <?}?>
+		</td>
+		<td class="delete"><img src="images/spacer.gif" onclick="Projects.del(<?echo $projects[$i]->id; ?>);" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
+<?
+	}
+$currentPage = Template::get("page");
+$pageCount = Template::get("pages");
+$basePageUrl = "/admin/projects/".$currentCategory->url;
+if($pageCount > 1)
+	include("templates/page-swapper.phtml");
+?>

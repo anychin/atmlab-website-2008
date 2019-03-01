@@ -1,0 +1,82 @@
+<?
+$photo = Template::get("photo");
+$img = $photo->image->resizes['admin']->id;
+?>
+<div class="form" id="photoform">
+	<div class="annotation">name=photo/photo,successUrl=<?php echo $_GET['url'];?></div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $photo->id;?>" /></span>
+	<table>
+		<tr>
+			<td rowspan="4" style="width:120px;">
+				<img src="/images/uploaded/<?php echo $img;?>.jpg" alt="" />
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">type=datepicker,name=date</div>
+				Дата:
+			</td>
+			<td>
+				<input type="text" value="<? echo date('d.m.Y', strtotime($photo->date)); ?>" class="text" style="width:100px;"/>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				Порядок:
+			</td>
+			<td>
+				<input type="text" class="text" name="ord" value="<?echo $photo->ord; ?>" />
+			</td>
+		</tr>
+	</table>
+	<div style="height:20px;"></div>
+	<table>
+		<tr class="formItem">
+			<td colspan="2">
+				<div class="label-text">Описание фото</div>
+				<div class="annotation">type=richtext</div>
+				<textarea name="description" class="richtext" id="richeditor_description" style="height:200px;width:100%;"><? echo stripslashes($photo->description);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+	</table>
+	Ресайзы изображения:
+	<?php
+	foreach ($photo->image->resizes as $name=>$resize)
+	{
+		if($name == 'admin')
+			continue;
+		?>
+		<div style="padding:20px 0 10px 0;">
+			<?php echo $name;?> (<span id="resizeSize<?php echo $name;?>"><?php echo $resize->width; ?>x<?php echo $resize->height; ?></span>)
+			<div id="resize<?php echo $name;?>" style="margin-top:10px;"></div>
+			<script type="text/javascript">
+			
+			onInit(function(){
+				var so = new SWFObject("/admin/flash/uploader.swf", "imageuploader<?php echo $name;?>", "250", "25", "9");
+				so.addParam("wmode", "opaque");
+				so.addVariable("url", "/admin/photo/image/resize/<?php echo $name;?>?PHPSESSID=<?echo Template::get("sessionid"); ?>");
+				so.addVariable("dataid", "<?echo $resize->image; ?>");
+				so.addVariable("onError", "onError");
+				so.addVariable("onUpload", "onUpload");
+				so.addVariable("multi", "true");
+				so.write("resize<?php echo $name;?>");
+			});
+			</script>
+		</div>
+		<img src="/images/uploaded/<?php echo $resize->id;?>.jpg" id="resize<?php echo $resize->name;?>" />
+		<?php 
+	}
+	?>
+</div>
+<script type="text/javascript">
+function onError(t){
+	alert("Произошла ошибка при загрузке файла");
+}
+function onUpload(data){
+	var d = XMLParser.deserialize(data);
+	jq("img[id=resize"+ d.image.name + "]").attr("src", "/images/uploaded/" + d.image.id + ".jpg");
+	jq("#resizeSize" + d.image.name).html(d.image.width + "x" + d.image.height);
+}
+</script>

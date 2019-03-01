@@ -1,0 +1,5 @@
+<?
+class Site extends BaseSite 
+{
+}
+?>

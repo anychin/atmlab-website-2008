@@ -1,0 +1,18 @@
+<?
+$currentPage = Template::get('page');
+$pageCount = Template::get('pages');
+$items = Template::get('news');
+$basePageUrl = "/news";
+?>
+<h2 style="padding-bottom: 20px;">События</h2>
+<div class="news-list">
+<?for ($i = 0; $i < count($items); $i++){?>
+	<div class="item">
+		<h3><a href="/news/<?php echo $items[$i]->id;?>"><?echo stripslashes($items[$i]->title); ?></a></h3>
+		<?echo stripslashes($items[$i]->shorttext); ?>
+	</div>
+<?}?>
+</div>
+<?
+include 'templates/page-swapper.phtml';
+?>

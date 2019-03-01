@@ -1,0 +1,59 @@
+<script type="text/javascript">
+	function onPresetsSave(d, data){
+		showOk();
+	}
+	onInit(function(){
+		jq(".cache").click(function(){
+			jq.get("/admin/presets/cache", function(){
+				alert("кеш сброшен");
+			});
+			return false;
+		});
+	});
+</script>
+<?$presets = Template::get('presets');?>
+<div class="ok-panel">
+	Изменения сохранены
+</div>
+<div class="form-panel" style="width:600px;">
+<div class="form" id="presetsform">
+	<div class="annotation">name=presets,onSuccess=onPresetsSave</div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $presets->id;?>" /></span>
+	<div style="padding: 10px 0;">
+		<a href="" class="cache">очистить кеш</a>
+	</div>
+	<table>
+		<tr class="formItem">
+			<td class="label">
+				Использовать WYSIWYG
+			</td>
+			<td>
+				<?
+					$str = '';
+					if($presets->useeditor == 1)
+						$str = "checked='checked'";
+				?>
+				<input name="useeditor" type="checkbox" <? echo $str;?>/>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,error.required=Обязательно к заполнению,type=email,error.not.valid=Неверный формат</div>
+				E-mail на сайте
+			</td>
+			<td>
+				<input class="text" type="text" name="mail" value="<? echo $presets->mail;?>" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">Код счетчиков</td>
+			<td>
+				<textarea name="counters" style="height:180px;"><? echo stripslashes($presets->counters);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>

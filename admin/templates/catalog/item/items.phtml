@@ -1,0 +1,45 @@
+<?
+$items = Template::get("items");
+$category = Template::get("category");
+if(count($items) > 0){
+?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Название</td>
+		<td class="price">Цена</td>
+		<td class="publish">&nbsp;</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($items); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="product<? echo $items[$i]->id; ?>" <? echo $style;?>>
+		<td class="title"><a href="/admin/catalog/<? echo $category->url;?>/edit/<? echo $items[$i]->id;?>"><? echo stripslashes($items[$i]->title);?></a></td>
+		<td class="price"><?echo $items[$i]->price; ?></td>
+		<td class="publish">
+			<?
+			if($items[$i]->published == 1){
+            ?>
+            	<img src="images/spacer.gif" onclick="Catalog.publ(<?echo $items[$i]->id; ?>);" class="publ" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" onclick="Catalog.unpubl(<?echo $items[$i]->id; ?>);" class="unpubl" style="display:none" width="12" height="12" alt="Скрыто" />
+            <? }else{?>
+            	<img src="images/spacer.gif" onclick="Catalog.publ(<?echo $items[$i]->id; ?>);" class="publ" style="display:none" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" onclick="Catalog.unpubl(<?echo $items[$i]->id; ?>);" class="unpubl" width="12" height="12" alt="Скрыто " />
+            <?}?>
+		</td>
+		<td class="delete"><img src="images/spacer.gif" onclick="Catalog.del(<?echo $items[$i]->id; ?>);" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
+<?
+$currentPage = Template::get("page");
+$pageCount = Template::get("pages");
+$startPageUrl = "/admin/catalog/".$category->url."/";
+if($pageCount > 1)
+	include("templates/page-swapper.phtml");
+}
+?>

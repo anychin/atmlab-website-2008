@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /admin/
+ErrorDocument 404 error/
+ErrorDocument 403 error/
+RewriteRule !\.(js|ico|gif|jpg|png|css|html|swf|flv|htm)$ site.php

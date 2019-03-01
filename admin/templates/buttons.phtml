@@ -1,0 +1,21 @@
+<table class="all">
+	<tr>
+		<td class="left">
+			<h1><? echo $template['pageTitle']; ?></h1>
+		</td>
+		<td class="right" nowrap="nowrap">
+			<?if(count($template[buttons]) > 0) { ?>
+			<table class="items">
+				<tr>
+					<?
+					for($i = 0; $i < count($template['buttons']); $i++){
+						$button = $template['buttons'][$i];
+						?>
+						<td><?include 'buttons/'.$button->type.'.phtml'; ?></td>
+					<?}?>
+				</tr>
+			</table>
+			<?} ?>
+		</td>
+	</tr>
+</table>

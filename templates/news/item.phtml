@@ -1,0 +1,8 @@
+<?
+$news = new News(Template::get('news'));
+?>
+<h2 style="padding-bottom: 20px;"><a href="/news">События</a> / <?php echo stripslashes($news->title);?></h2>
+<div class="item">
+	<h3><?echo stripslashes($news->title); ?></h3>
+	<?echo stripslashes($news->text); ?>
+</div>

@@ -1,0 +1,45 @@
+<?
+function printCategories($categories, $cat)
+{
+	for($i = 0; $i < count($categories); $i++)
+	{	
+		$category = $categories[$i];
+		$sel = isset($cat) && $cat->id == $category->id;
+	?>
+		<table class="item" id="category<? echo $category->id; ?>">
+			<tr>
+				<td class="title"><?php if($sel){ echo '<b>'.stripslashes($category->name).'</b>';}else{?><a href="/admin/projects/categories/edit/<? echo $category->id; ?>"><? echo stripslashes($category->name); ?></a><?php }?></td>
+				<td class="buttons">
+					<table><tr>
+						<td><img src="/admin/images/spacer.gif" onclick="ProjectsCategory.del(<?echo $category->id; ?>);" class="del" width="12" height="12" alt="Удалить" /></td>
+					</tr></table>
+				</td>
+			</tr>
+		</table>
+	<?}
+}
+?>
+<table class="category-content">
+	<tr>
+		<td class="left-panel">
+			<table class="all">
+				<tr>
+					<td class="all">
+						<?printCategories(Template::get("categories"), Template::get('category'));?>
+						<div class="create"><img src="/admin/images/add.gif" width="12" height="12" alt="Добавить категорию" style="position: relative;top:3px;"/> <a href="/admin/projects/categories/new">Новая категория проектов</a></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="right-panel">
+			<?if(Template::get("category")){ ?>
+				<div class="ok-panel">
+					Изменения сохранены
+				</div>
+				<div class="wrap">
+					<?include 'form.phtml';?>
+				</div>
+			<?} ?>
+		</td>
+	</tr>
+</table>

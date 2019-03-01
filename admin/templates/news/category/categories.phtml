@@ -1,0 +1,44 @@
+<?
+function printCategories($categories)
+{
+	for($i = 0; $i < count($categories); $i++)
+	{	
+		$category = $categories[$i];
+	?>
+		<table class="item" id="category<? echo $category->id; ?>">
+			<tr>
+				<td class="title"><a href="/admin/news/categories/edit/<? echo $category->id; ?>"><? echo stripslashes($category->name); ?></a></td>
+				<td class="buttons">
+					<table><tr>
+						<td><img src="/admin/images/spacer.gif" onclick="NewsCategory.del(<?echo $category->id; ?>);" class="del" width="12" height="12" alt="Удалить" /></td>
+					</tr></table>
+				</td>
+			</tr>
+		</table>
+	<?}
+}
+?>
+<table class="category-content">
+	<tr>
+		<td class="left-panel">
+			<table class="all">
+				<tr>
+					<td class="all">
+						<?printCategories(Template::get("categories"));?>
+						<div class="create"><img src="/admin/images/add.gif" width="12" height="12" alt="Добавить категорию" style="position: relative;top:3px;"/> <a href="/admin/news/categories/new">Новая категория новостей</a></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="right-panel">
+			<?if(Template::get("category")){ ?>
+				<div class="ok-panel">
+					Изменения сохранены
+				</div>
+				<div class="wrap">
+					<?include 'form.phtml';?>
+				</div>
+			<?} ?>
+		</td>
+	</tr>
+</table>

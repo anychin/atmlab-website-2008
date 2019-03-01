@@ -1,0 +1,42 @@
+<?
+	$users = Template::get("users");
+?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Логин</td>
+		<td class="email">E-mail</td>
+		<td class="publish">&nbsp;</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($users); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="user<? echo $users[$i]->id; ?>" <? echo $style;?>>
+		<td class="title"><a href="/admin/users/edit/<? echo $users[$i]->id;?>"><? echo $users[$i]->login;?></a></td>
+		<td class="title"><a href="/admin/users/edit/<? echo $users[$i]->id;?>"><? echo $users[$i]->email;?></a></td>
+		<td class="publish">
+			<?
+			if($users[$i]->isblocked == 0){
+            ?>
+            	<img src="images/spacer.gif" class="publ" onclick="User.publ(<?echo $users[$i]->id; ?>);" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="User.unpubl(<?echo $users[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Скрыто" />
+            <? }else{?>
+            	<img src="images/spacer.gif" class="publ" onclick="User.publ(<?echo $users[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="User.unpubl(<?echo $users[$i]->id; ?>);" width="12" height="12" alt="Скрыто " />
+            <?}?>
+		</td>
+		<td class="delete"><img src="images/spacer.gif" onclick="User.del(<?echo $users[$i]->id; ?>);" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
+<?
+$currentPage = Template::get("page");
+$pageCount = Template::get("pages");
+$basePageUrl = "/admin/users";
+if($pageCount > 1)
+	include("templates/page-swapper.phtml");
+?>

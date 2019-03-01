@@ -1,0 +1,44 @@
+<?
+function printCategories($categories, $cat, $counts)
+{
+	for($i = 0; $i < count($categories); $i++)
+	{	
+		$category = $categories[$i];
+		$sel = isset($cat) && $cat->id == $category->id;
+	?>
+		<table>
+			<tr>
+				<td class="title" style="padding-bottom:10px;"><?php if($sel){ echo '<b>'.stripslashes($category->name).'</b>';}else{?><a href="/admin/projects/<? echo $category->url; ?>"><? echo stripslashes($category->name); ?></a><?php }?> (<?php echo $counts[$category->id];?>)</td>
+			</tr>
+		</table>
+	<?}
+}
+?>
+<table class="category-content">
+	<tr>
+		<td class="left-panel">
+			<table class="all">
+				<tr>
+					<td class="all">
+						<?printCategories(Template::get("categories"), Template::get('category'), Template::get('counts'));?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td <?php if(Template::get('project')){?> class="right-panel"<?php }else{ ?>style="padding:0 0 0 10px;width:100%;"<?php }?>>
+			<?if(Template::get("category")){ ?>
+				<div class="ok-panel">
+					Изменения сохранены
+				</div>
+				<div class="wrap">
+					<?
+						if(Template::get('project'))
+							include 'form.phtml';
+						else
+							include 'list.phtml';
+					?>
+				</div>
+			<?} ?>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,125 @@
+<?
+$links = Template::get("links");
+$onLinks = Template::get("onlinks");
+?>
+<script type="text/javascript">
+	var linksId = {};
+	var newLink = "";
+	var container;
+	var article = <? echo $article->id; ?>;
+	onInit(function(){
+		newLink = jq(".new-link").html();
+		container = jq(".this-links");
+		jq(".links-opener").click(function(){
+			jq(".links-container").toggle();
+			return false;
+		});
+		jq("[@id^=link]").each(function(i, item){
+			item = jq(item);
+			var id = item.attr("id").replace("link", "");
+			linksId[id] = true;
+			jq(".del", item).click(function(){
+				jq.get("/admin/links/delete/?article=" + article + "&link="+id, function(){
+					item.remove();
+					linksId[id] = false;
+				});
+			});
+		});
+		jq("[@id^=onlink]").each(function(i, item){
+			item = jq(item);
+			var id = item.attr("id").replace("onlink", "");
+			jq(".del", item).click(function(){
+				jq.get("/admin/links/delete-other/?article=" + id + "&link="+article, function(){
+					item.remove();
+				});
+			});
+		});
+		var currentDrag = null;
+		jq("td.title").draggable({helper:"clone", start:function(e, ui){
+			currentDrag = jq(e.target);
+		}});
+		container.droppable({
+			accept: "td.title",
+			activeClass: "this-links-active",
+			drop: function(e, ui) {
+				if(currentDrag == null)
+					return;
+				var id = currentDrag.attr("id").replace("a", "");
+				if(linksId[id] || id == article)
+					return;
+				jq.get("/admin/links/add/?article=" + article + "&link="+id, function(){
+					linksId[id] = true;
+					container.append(newLink);
+					var l = jq("table:last", container);
+					jq("a", l).html(currentDrag.html());
+					jq("a", l).attr("href", currentDrag.attr("href"));
+					jq(".del", l).click(function(){
+						jq.get("/admin/links/delete/?article=" + article + "&link="+ id, function(){
+							l.remove();
+							linksId[id] = false;
+						});
+					});
+					currentDrag = null;
+				});
+			}
+		});
+	});
+</script>
+<a href="" class="links-opener">Перелинковка страниц</a>
+<br /><br />
+<div class="new-link">
+	<table>
+		<tr>
+			<td><a href="" class="title"></a></td>
+			<td class="button"><img src="/admin/images/spacer.gif" class="del" width="12" height="12" alt="Удалить" /></td>
+		</tr>
+	</table>
+</div>
+<table class="links-container">
+	<tr>
+		<td class="this">
+			<h3>Ссылки на этой странице</h3>
+			<div class="this-links">
+			<?
+			$articles = Template::get("linkArticles");
+			for($i = 0; $i < count($links); $i++){
+				$link = $links[$i];
+				for($j = 0; $j < count($articles); $j++){
+					if($articles[$j]->id == $link->link){?>
+					<table id="link<?echo $link->link; ?>">
+						<tr>
+							<td><a href="/admin/article/edit/<?echo $articles[$j]->url; ?>" class="title"><?echo stripslashes($articles[$j]->name); ?></a></td>
+							<td class="button"><img src="/admin/images/spacer.gif" class="del" width="12" height="12" alt="Удалить" /></td>
+						</tr>
+					</table>
+					<?	break;
+					}
+				}
+			}
+			?>
+			</div>
+		</td>
+		<td class="to-this">
+			<h3>Ссылки на эту страницу</h3>
+			<div class="to-this-links">
+			<?
+			$articles = Template::get("linkArticles");
+			for($i = 0; $i < count($onLinks); $i++){
+				$link = $onLinks[$i];
+				for($j = 0; $j < count($articles); $j++){
+					if($articles[$j]->id == $link->article){?>
+					<table id="onlink<?echo $link->article; ?>">
+						<tr>
+							<td><a href="/admin/article/edit/<?echo $articles[$j]->url; ?>" class="title"><?echo stripslashes($articles[$j]->name); ?></a></td>
+							<td class="button"><img src="/admin/images/spacer.gif" class="del" width="12" height="12" alt="Удалить" /></td>
+						</tr>
+					</table>
+					<?	break;
+					}
+				}
+			}
+			?>
+			</div>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,180 @@
+<?
+$item = Template::get("item");
+$category = Template::get("category");
+?>
+<script type="text/javascript">
+	function getUrl(item){
+		var url = jq.trim(jq("input", item).val());
+		if(url.length < 1)
+			return url;
+		if(url.charAt(0) == '/')
+			url = url.substr(1, url.length);
+		return url;
+	}
+	onInit(function(){
+		jq(".image_delete").click(function(){
+			jq.get("/admin/catalog/image/delete/<?echo $item->id; ?>", function(){
+				jq(".image_delete").hide();
+				jq("#uploaded_photo").hide();
+			})
+			return false;
+		});
+	});
+</script>
+<div class="form" id="catalogform">
+	<div class="annotation">name=catalog,successUrl=/admin/catalog/<?echo $category->url; ?></div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $item->id;?>" /></span>
+	<table>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,error.required=Обязательно к заполнению</div>
+				Название
+			</td>
+			<td>
+				<input class="text" type="text" name="title" value="<? echo stripslashes($item->title);?>" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,error.required=Обязательно к заполнению</div>
+				Артикул
+			</td>
+			<td>
+				<input class="text" type="text" name="articul" value="<? echo stripslashes($item->advanced->articul);?>" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,value=getUrl,error.not.unique=URL-адрес уже существует</div>
+				URL на сайте
+			</td>
+			<td>
+				<input type="text" name="url" value="<? echo stripslashes($item->url);?>" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">error.not.exists=Категория не существует</div>
+				Сменить категорию (id)
+			</td>
+			<td>
+				<input type="text" name="category" value="" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">Цена</td>
+			<td>
+				<div class="annotation">type=float,error.format.wrong=Введите число</div>
+				<input type="text" name="price" value="<? echo $item->price;?>" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">Оптовая цена</td>
+			<td>
+				<div class="annotation">type=float,error.format.wrong=Введите число</div>
+				<input type="text" name="price2" value="<? echo $item->advanced->price2;?>" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">Количество</td>
+			<td>
+				<div class="annotation">type=int,error.format.wrong=Введите целое число</div>
+				<input type="text" name="count" value="<? echo $item->advanced->count;?>" class="text" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">Описание</td>
+			<td>
+				<textarea name="short_description" style="height:70px;"><? echo stripslashes($item->short_description);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Фото</td>
+			<td>
+				<? if($item->image->resizes){?>
+					<img src="/images/uploaded/<? echo $item->image->resizes[admin]->id; ?>.jpg" class="uploaded_image" id="uploaded_photo" />
+				<?}else{?>
+					<img src="" class="uploaded_image" style="display:none;" id="uploaded_photo" />
+				<?} ?>
+				<div id="imagecontainer">флешка</div>
+				<? if($item->image->resizes){?>
+					<a href="" class="image_delete">Удалить</a>
+				<?} else{?>
+					<a href="" class="image_delete" style="display: none;">Удалить</a>
+				<?} ?>
+				<script type="text/javascript">
+					onInit(function(){
+						var so = new SWFObject("/admin/flash/uploader.swf", "imageuploader", "250", "25", "9");
+						so.addParam("wmode", "opaque");
+						so.addVariable("url", "/admin/catalog/upload/image/?PHPSESSID=<?echo Template::get("sessionid"); ?>");
+						so.addVariable("dataid", <?echo $item->id; ?>);
+						so.addVariable("onError", "onError");
+						so.addVariable("onUpload", "onUpload");
+						so.write("imagecontainer");
+					});
+					function onError(t){
+						alert("Произошла ошибка при загрузке файла");
+					}
+					function onUpload(data){
+						var d = XMLParser.deserialize(data);
+						var resizes = d.image.resizes[0].resize;
+						for(var i = 0; i < resizes.length; i++)
+							if(resizes[i].name == "admin")
+								jq("#uploaded_photo").attr("src", "/images/uploaded/" + resizes[i].id + ".jpg").css({display:"block"});
+						jq(".image_delete").css({display:"inline"});
+					}
+				</script>
+			</td>
+		</tr>
+	</table>
+	<table style="margin-top:15px;">
+		<tr class="formItem">
+			<td colspan="2">
+				<div class="label-text">Технические характеристики</div>
+				<?php if($presets->useeditor == 1){?>
+				<div class="annotation">type=richtext</div>
+				<textarea name="description" id="richeditor_text" class="richtext" style="height:400px;width:100%;"><? echo stripslashes($item->description);?></textarea>
+				<?php }else{?>
+				<textarea name="description" id="richeditor_text" style="height:400px;width:100%;"><? echo stripslashes($item->description);?></textarea>
+				<?php }?>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="checks">
+				<div class="formItem">
+					<div class="annotation">type=checkbox</div>
+					<?
+						$str = '';
+						if($item->published == 1)
+							$str = "checked='checked'";
+					?>
+					Товар опубликован: <input name="published" type="checkbox" <? echo $str;?>/>
+				</div>
+            </td>
+		</tr>
+		<!-- 
+		<tr>
+			<td colspan="2">
+				Галлерея фотографий:<br /><br />
+				<div class="photogallery"></div>
+				<script type="text/javascript">
+					var so = new SWFObject("/admin/flash/uploader.swf", "mymovie", "250", "25", "9");
+					so.addParam("wmode", "opaque");
+					so.addVariable("url", "/upload");
+					so.addVariable("false", "true");
+					so.write("photogallery");
+				</script>
+			</td>
+		</tr>
+		 -->
+	</table>
+</div>

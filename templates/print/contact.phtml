@@ -1,0 +1,14 @@
+<?$data = Template::get('data');?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Вопрос с сайта</title>
+	</head>
+	<style>
+		body, html{padding:0;margin:0;font-family:Arial, Verdana, Helvetica, sans-serif; font-size:12px;}
+		body{padding: 20px;}
+	</style>
+	<body>
+		<?echo strip_tags($data['text']); ?>
+	</body>
+</html>

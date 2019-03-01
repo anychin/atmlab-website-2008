@@ -1,0 +1,48 @@
+<div class="success">
+	<div class="message">
+		Ваше сообщение было отправлено.
+	</div>
+</div>
+<div class="form" id="contactForm">
+	<div class="annotation">name=form,onSuccess=onContactSend</div>
+	<table class="no-border contact">
+		<tr class="formItem">
+			<td class="label">Как Вас зовут</td>
+			<td><input type="text" class="text" name="name" /></td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true</div>
+				Как с Вами связаться<sup>*</sup>
+			</td>
+			<td><input type="text" class="text" name="contact" /></td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				Название Вашей компании
+			</td>
+			<td><input type="text" class="text" name="company" /></td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true</div>
+				Вопрос / комментарий<sup>*</sup>
+			</td>
+			<td><textarea class="textarea" name="text"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="image" src="/images/send.png" /></td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	function onContactSend(d, data){
+		jq(".message").show(200, function(){
+			setTimeout(function(){
+				jq(".message").hide();
+				jq("textarea").val("");
+			}, 3000);
+		});
+	}
+</script>

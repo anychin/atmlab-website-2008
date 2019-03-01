@@ -1,0 +1,44 @@
+<?php 
+$config = Config::getInstance();
+?>
+<html>
+<head>
+<title>Административная панель - Аутентификация</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/admin/css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/admin/js/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/admin/js/core.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/admin/js/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/admin/js/AjaxForm.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+	AjaxForm.options.prefix = '/admin';
+</script>
+</head>
+<body>
+	<div class="site">
+		<div class="line">
+			<div class="form">
+				<div class="annotation">name=auth|url=<?=$config->adminUrl;?>/auth|successUrl=<?=$config->adminUrl;?>/</div>
+				<div class="formItem">
+					<div class="annotation">required=true|errorMessage=login_error|error.not.exists=Пользователь не существует|error.required=Обязательно для заполнения|error.not.admin=Доступ запрещен|error.blocked=Заблокирован</div>
+					<label for="login">Логин</label>
+					<input type="text" name="login" id="login" />
+				</div>
+				<div class="formItem password">
+					<div class="annotation">required=true|errorMessage=password_error|error.required=Обязательно для заполнения|error.not.valid=Неверный пароль</div>
+					<label for="password">Пароль</label>
+					<input type="password" name="password" id="password" />
+				</div>
+				<div class="clear"></div>
+				<img src="/admin/images/login.gif" name="submit" class="submit" alt="" />
+			</div>
+		</div>
+		<div class="errors">
+			<div id="login_error"></div>
+			<div id="password_error"></div>
+		</div>
+	</div>
+</body>
+</html>

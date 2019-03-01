@@ -1,0 +1,55 @@
+<script type="text/javascript">
+	var editImageUrl = "<?php echo $editUrl;?>";
+</script>
+<? if($image->resizes){?>
+	<img src="/images/uploaded/<? echo $image->resizes[admin]->id; ?>.jpg" class="uploaded_image" id="uploaded_photo" />
+<?}else{?>
+	<img src="" class="uploaded_image" style="display:none;" id="uploaded_photo" />
+<?} ?>
+<div id="imagecontainer">флешка</div>
+<? if($image->resizes){?>
+	<a href="" class="image_delete">Удалить</a><br />
+	<a href="<?php echo $editUrl.$image->id;?>" class="image_edit">Редактировать</a>
+<?} else{?>
+	<a href="" class="image_delete" style="display: none;">Удалить</a><br />
+	<a href="" class="image_edit" style="display: none;">Редактировать</a>
+<?} ?>
+<script type="text/javascript">
+	onInit(function(){
+		var so = new SWFObject("/admin/flash/uploader.swf", "imageuploader", "250", "25", "9");
+		so.addParam("wmode", "opaque");
+		so.addVariable("url", "<?php echo $uploadUrl;?>?atmsession=<?echo Template::get("sessionid"); ?>");
+		so.addVariable("dataid", <?php echo $dataid;?>);
+		<?php if(isset($dopVars))
+			foreach($dopVars as $key=>$value){?>
+			so.addVariable("data<?php echo $key;?>", "<?php echo $value;?>");
+		<?php } ?>
+		so.addVariable("onError", "onError");
+		so.addVariable("onUpload", "onUploadImage");
+		so.write("imagecontainer");
+	});
+	function onError(t){
+		alert("Произошла ошибка при загрузке файла");
+	}
+	function onUploadImage(data){
+		var d = XMLParser.deserialize(data);
+		var resizes = d.image.resizes[0].resize;
+		jq(".image_edit")
+		for(var i = 0; i < resizes.length; i++)
+			if(resizes[i].name == "admin")
+				jq("#uploaded_photo").attr("src", "/images/uploaded/" + resizes[i].id + ".jpg").css({display:"block"});
+		jq(".image_delete").css({display:"inline"});
+		jq(".image_edit").attr("href", editImageUrl + d.image.id);
+		jq(".image_edit").css({display:"inline"});
+	}
+	onInit(function(){
+		
+		jq(".image_delete").click(function(){
+			jq.get("<?php echo $deleteUrl;?><?echo $dataid; ?>", function(){
+				jq(".image_delete").hide();
+				jq("#uploaded_photo").hide();
+			})
+			return false;
+		});
+	});
+</script>

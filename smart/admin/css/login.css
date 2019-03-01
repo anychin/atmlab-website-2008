@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+html, body{width:100%;height:100%;padding: 0;margin: 0;}
+body{padding:0px;margin:0px;background:#ccc;font-family: Trebuchet MS, Arial,Tahoma;font-size:12px;color:#000;}
+
+.clear{clear: both;width: 0px;height: 0px;overflow: hidden;}
+.annotation{display: none;}
+
+.site{padding-top: 200px;}
+.line{background: #fff;width: 100%;border-top:1px solid #b2b2b2;border-bottom:1px solid #b2b2b2;padding: 20px 0;}
+.form{position: relative;width: 600px;margin: 0 auto;}
+.submit{position: absolute;bottom:-64px;cursor: pointer;right: 10px;}
+.formItem, .formItemError{float: left;}
+input{border:1px solid #8d8d8d;height: 23px;width: 200px;font-size: 14px;}
+.password{padding-left: 40px;}
+label{font-size: 18px;padding-right: 10px;color: #3e809a;}
+.formItemError label{color: #f00;}
+.formItemError input{border-color: #f00;}
+.errors{text-align: center;padding-top: 80px;}
+.errors div{padding-bottom: 5px;color: #f00;font-size: 16px;}

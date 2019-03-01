@@ -1,0 +1,47 @@
+<div class="right-panel" style="padding: 0;"><div class="wrap">
+<div class="form">
+	<div class="annotation">name=users|successUrl=/admin/users</div>
+	<span class="formItem"><input type="hidden" name="id" value="<?=$this->user->id;?>" /></span>
+	<table>
+		<tr>
+			<td class="checks" colspan="2">
+				<h2 style="font-weight: normal;">Пользователь <?=$this->user->login;?></h2>
+				<div class="clear"></div>
+				<div class="formItem" style="float:left;">
+					<div class="annotation">type=checkbox</div>
+					<?
+						$str = '';
+						if($this->user->isblocked == 1)
+							$str = "checked='checked'";
+					?>
+					<label for="publish"></>Заблокирован:</label> <input id="publish" name="isblocked" type="checkbox" <?=$str;?>/>
+				</div>
+				<div style="clear:both;height:15px;"></div>
+		   </td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Адрес почты</div>
+				<div class="annotation">required=true|error.required=Обязательно к заполнению,error.not.unique=Такой адрес уже существует</div>
+				<input type="text" class="text" name="email" value="<?=$this->user->email;?>"/>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="checks" colspan="2">
+				<h2 style="font-weight: normal;">Сменить пароль</h2>
+			</td>
+		</tr>
+		<tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Новый пароль</div>
+				<div class="annotation"></div>
+				<input type="text" class="text" name="password" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr>
+	</table>	
+</div>
+</div></div>

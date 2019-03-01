@@ -1,0 +1,13 @@
+<?php
+if(Template::get('inCategory'))
+{
+	if(Template::get('form'))
+		include 'category/form.phtml';
+	else
+		include 'category/list.phtml';
+}
+else
+{
+	include 'item/item.phtml';
+}
+?>

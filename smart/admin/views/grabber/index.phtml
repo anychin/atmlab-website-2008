@@ -1,0 +1,24 @@
+<?php if(count($this->grabbers) > 0){?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Название</td>
+		<td class="title">С какой почты</td>
+		<td class="title">На какую почту</td>
+	</tr>
+<?
+	foreach($this->grabbers as $i => $g)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="list_item<?=$g->id; ?>" <?=$style;?>>
+		<td class="title"><a href="/admin/grabber/edit/id/<?=$g->id;?>"><?=$g->site;?></a></td>
+		<td class="title"><?=$g->email?></td>
+		<td class="title"><?=$g->email2?></td>
+	</tr>
+    <?}?>
+</table>
+<?php }else{?>
+<h2>Нет грабберов</h2>
+<?php }?>

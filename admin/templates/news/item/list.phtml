@@ -1,0 +1,43 @@
+<?
+	$news = Template::get("news");
+	$category = Template::get("category");
+?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Название</td>
+		<td class="date">Дата</td>
+		<td class="publish">&nbsp;</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($news); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="news<? echo $news[$i]->id; ?>" <? echo $style;?>>
+		<td class="title"><a href="/admin/news/<? echo $category->url;?>/edit/<? echo $news[$i]->id;?>"><? echo stripslashes($news[$i]->title);?></a></td>
+		<td class="date"><?$d = explode("-", $news[$i]->date); echo $d[2]."-".$d[1]."-".$d[0]; ?></td>
+		<td class="publish">
+			<?
+			if($news[$i]->published == 1){
+            ?>
+            	<img src="images/spacer.gif" class="publ" onclick="News.publ(<?echo $news[$i]->id; ?>);" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="News.unpubl(<?echo $news[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Скрыто" />
+            <? }else{?>
+            	<img src="images/spacer.gif" class="publ" onclick="News.publ(<?echo $news[$i]->id; ?>);" style="display:none" width="12" height="12" alt="Опубликовано" />
+            	<img src="images/spacer.gif" class="unpubl" onclick="News.unpubl(<?echo $news[$i]->id; ?>);" width="12" height="12" alt="Скрыто " />
+            <?}?>
+		</td>
+		<td class="delete"><img src="images/spacer.gif" onclick="News.del(<?echo $news[$i]->id; ?>);" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
+<?
+$currentPage = Template::get("page");
+$pageCount = Template::get("pages");
+$basePageUrl = "/admin/news/".$currentCategory->url;
+if($pageCount > 1)
+	include("templates/page-swapper.phtml");
+?>

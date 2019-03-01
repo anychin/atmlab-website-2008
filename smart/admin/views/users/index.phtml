@@ -1,0 +1,31 @@
+<?php if(count($this->users) > 0){?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Логин</td>
+		<td class="date">E-mail</td>
+		<td class="publish">&nbsp;</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($this->users); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+		$publ_css = $this->users[$i]->isblocked == 0 ? '' : 'display:none';
+		$unpubl_css = $this->users[$i]->isblocked == 0 ? 'display:none' : '';
+	?>
+	<tr id="list_item<?=$this->users[$i]->id; ?>" <?=$style;?>>
+		<td class="title"><a href="/admin/users/edit/id/<?=$this->users[$i]->id;?>"><?=stripslashes($this->users[$i]->login);?></a></td>
+		<td class="date"><?=$this->users[$i]->email;?></td>
+		<td class="publish">
+			<img src="/admin/images/spacer.gif" class="publ" onclick="List.pub(<?=$this->users[$i]->id; ?>, '/admin/users/publish');" style="<?=$publ_css;?>" width="12" height="12" alt="Опубликовано" />
+            <img src="/admin/images/spacer.gif" class="unpubl" onclick="List.pub(<?=$this->users[$i]->id; ?>, '/admin/users/publish');" style="<?=$unpubl_css;?>" width="12" height="12" alt="Скрыто" />
+        </td>
+		<td class="delete"><img src="/admin/images/spacer.gif" onclick="List.del(<?=$this->users[$i]->id; ?>, '/admin/users/delete');" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
+<?php }else{?>
+<h2>Нет пользователей на этом сайте</h2>
+<?php }?>

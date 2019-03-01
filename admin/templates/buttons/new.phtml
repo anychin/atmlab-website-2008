@@ -1,0 +1,9 @@
+<?$title =$button->message;?>
+<a href="<? echo $button->url;?>" title="<? echo $title ?>">
+	<?if(isset($button->data[img])){ ?>
+		<img src="<? echo $button->data[img]; ?>" alt="<? echo $title ?>" align="middle" class="png" width="32" height="32"/><br />
+	<?}else{ ?>
+		<img src="images/new_f2.png" alt="<? echo $title; ?>" align="middle" class="png" width="32" height="32"/><br />
+	<?} ?>
+	<? echo $title; ?>
+</a>

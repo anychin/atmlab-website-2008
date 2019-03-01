@@ -1,0 +1,78 @@
+<table class="page-swapper"><tr>
+	<?
+		if(!isset($endPageUrl))
+			$endPageUrl = "";
+		$n1 = 5;
+		$n2 = 5;
+		$maxPage = $pageCount;
+		$n = $n1;
+		if($n > $maxPage)
+			$n = $maxPage;
+		$loopPage = 1;
+		renderPage(0, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+		while($loopPage <= $n)
+		{
+			renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+			$loopPage ++;
+		}
+		if($currentPage <= $loopPage)
+		{
+			$n = $currentPage + $n2 - 1;
+			if($n > $maxPage)
+				$n = $maxPage;
+			if($n > $loopPage){
+				while($loopPage <= $n)
+				{
+					renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+					$loopPage++;
+				}
+			}
+		}
+		if($currentPage > $loopPage - 1)
+		{
+			$n0 = $currentPage - $n2 + 1;
+			if($n0 <= $loopPage - 1)
+				$n0 = $loopPage;
+			$n = $currentPage + $n2 - 1;
+			if($n > $maxPage)
+				$n = $maxPage;
+			if($n0 > $loopPage && $n0 < $maxPage)
+			{
+				if($n0 - $loopPage < 2)
+					renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+				else
+					renderDelimeter();
+			}
+			if($n > $n0){
+				$loopPage = $n0;
+				while ($loopPage <= $n)
+				{
+					renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+					$loopPage ++;
+				}
+			}
+			
+		}
+		if($maxPage - $n1 > $loopPage - 1)
+		{
+			if(($maxPage - $n1) - $loopPage + 1 < 2){
+				renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+				$loopPage ++;
+			}else
+				renderDelimeter();
+		}
+		$n = $maxPage - $n1 + 1;
+		if($n < $loopPage)
+			$n = $loopPage;
+		if($n <= $maxPage)
+		{
+			$loopPage = $n;
+			while($loopPage <= $maxPage)
+			{
+				 renderPage($loopPage, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+				 $loopPage ++;    	
+			}
+		}
+		renderPage($maxPage + 1, $currentPage, $basePageUrl, $maxPage, $endPageUrl);
+	?>
+</tr></table>

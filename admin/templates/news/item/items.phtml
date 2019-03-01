@@ -1,0 +1,37 @@
+<table class="news-content">
+	<tr>
+		<td class="left-panel2">
+			<div class="all">
+				<div class="title"><?echo Dictionary::get("news.categories.panel.title"); ?></div>
+				<?
+				$categories = Template::get("categories");
+				$currentCategory = Template::get("category");
+				for($i = 0; $i < count($categories); $i++)
+				{
+					$category = $categories[$i];
+				?>
+				<div class="item">
+					<?if($category->id == $currentCategory->id){ ?>
+						<b><?echo stripslashes($category->name); ?></b>
+					<?}else{ ?>
+						<a href="/admin/news/<?echo $category->url; ?>"><?echo stripslashes($category->name); ?></a>
+					<?} ?>
+				</div>
+				<?}
+				?>
+			</div>
+		</td>
+		<td class="right-panel">
+			<?if(Template::get("list")) 
+					include 'list.phtml';
+			else{ ?>
+			<div class="wrap">
+				<?
+				if(Template::get('form'))
+					include ('form.phtml');
+				?>
+			</div>
+			<?} ?>
+		</td>
+	</tr>
+</table>

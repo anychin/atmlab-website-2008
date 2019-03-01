@@ -1,0 +1,10 @@
+<?php
+	$article = Template::get('article');
+	if($article->url == 'more')
+	{?>
+		<style type="text/css">
+			.right-menu{display:none;}
+		</style>
+<?php }?>
+<h2 class="title"><?php echo stripslashes($article->name);?></h2>
+<?php echo stripslashes($article->text);?>

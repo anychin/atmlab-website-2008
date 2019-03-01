@@ -1,0 +1,24 @@
+<script>
+	onInit(function(){
+		jq("#saveformbutton").click(function(){
+			var f = jq(".form");
+			if(f.length == 0 || f.length > 1){
+				alert("На странице отсутствует форма или их 2");
+				return false;
+			}
+			for(var i in AjaxForm.forms)
+				AjaxForm.forms[i].submit();
+			return false;
+		});
+	});
+</script>
+<?$title =$button->message;?>
+<a href="" title="<?=$title;?>" id="saveformbutton">
+	<?if(isset($button->data['img'])){ ?>
+		<img src="<?=$button->data['img']; ?>" alt="<?=$title;?>" align="middle" class="png" width="32" height="32"/><br />
+	<?}else{ ?>
+		<div class="b"><img src="<?=$base_url;?>/images/button-save.png" alt="<?=$title;?>" align="middle" class="png" width="44" height="44"/></div>
+	<?} ?>
+	<div class="l"><? echo $title; ?></div>
+</a>
+<div class="clear"></div>

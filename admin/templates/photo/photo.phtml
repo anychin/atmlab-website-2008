@@ -1,0 +1,46 @@
+<?php
+$photo = Template::get('photo');
+$image = Template::get('image');
+?>
+<table class="photo-content" style="width:100%;">
+	<tr>
+		<?php if(!isset($photo) && !isset($image)){?>
+		<td class="left-panel">
+			<table class="all">
+				<tr>
+					<td class="all">
+						<?
+						$galleries = Template::get("galleries");
+						$gg = Template::get("gallery");
+						for($i = 0; $i < count($galleries); $i++){
+							$gallery = $galleries[$i];
+						?>
+						<table class="item" id="gallery<? echo $gallery->id; ?>">
+							<tr>
+								<td class="title">
+									<?if($gg->id == $gallery->id){?>
+										<b><? echo stripslashes($gallery->title); ?></b>
+									<?}else{?>
+										<a href="/admin/photo/edit/<? echo $gallery->id; ?>"><? echo stripslashes($gallery->title); ?></a>
+									<?}?>
+								</td>
+								<td class="buttons">
+									<table><tr>
+										<td><img src="/admin/images/spacer.gif" onclick="Gallery.del(<?echo $gallery->id; ?>);" class="del" width="12" height="12" alt="Удалить" /></td>
+									</tr></table>
+								</td>
+							</tr>
+						</table>
+						<?} ?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<?php }?>
+		<td class="right-panel" style="padding-left:0;">
+			<?if(Template::get("galleryForm")){?><div class="wrap"><?include 'gallery/form.phtml';?></div><?}?>
+			<?if($photo){?><div class="wrap"><?include 'templates/photo_form.phtml';?></div><?}?>
+			<?if($image){?><div class="wrap"><?include 'templates/image_form.phtml';?></div><?}?>
+		</td>
+	</tr>
+</table>

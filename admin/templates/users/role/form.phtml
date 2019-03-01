@@ -1,0 +1,19 @@
+<?
+$role = Template::get("role");
+?>
+<div class="form form-panel" id="roleform">
+	<div class="annotation">name=users/roles,successUrl=/admin/users/roles</div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $role->id;?>" /></span>
+	<table>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,error.required=Обязательно к заполнению,error.not.unique=Роль с таким именем уже существует</div>
+				Название
+			</td>
+			<td>
+				<input class="text" type="text" name="name" value="<? echo $role->name;?>" />
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+	</table>
+</div>

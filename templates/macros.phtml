@@ -1,0 +1,41 @@
+<?php
+function renderPage($lp, $page, $startUrl, $maxPage, $endUrl = "")
+{
+	if($lp == 0)
+	{
+		$class = "";
+		if($page == 1)
+			$class = "invisible";
+	?>
+		<td class="back <?echo $class; ?>">
+			<?if($class == ""){ ?>
+				<a href="<? echo $startUrl; ?>/page/<? echo ($page - 1).$endUrl;?>">&larr;</a>
+			<?}else{ ?>
+				&larr;
+			<?} ?>
+		</td>	
+	<?}
+	if($lp > 0 && $lp <= $maxPage)
+	{
+		if($lp == $page){?>
+			<td><? echo $lp;?></td>
+		<?}else{?>
+			<td><a href="<? echo $startUrl; ?>/page/<? echo $lp.$endUrl;?>"><? echo $lp;?></a></td>
+		<?}
+	}
+	if($lp > $maxPage)
+	{
+		$class = "";
+		if($page == $maxPage)
+			$class = "invisible";
+	?>
+		<td class="next <?echo $class; ?>">
+			<?if($class == ""){ ?>
+				<a href="<? echo $startUrl; ?>/page/<? echo ($page + 1).$endUrl;?>">&rarr;</a>
+			<?}else{ ?>
+				&rarr;
+			<?} ?>
+		</td>	
+	<?}
+}
+?>

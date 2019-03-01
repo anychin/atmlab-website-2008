@@ -1,0 +1,170 @@
+<?
+	$urlArray = Template::get("url");
+	if(!isset($urlArray))
+		$urlArray = array();
+	$currentArticle = null;
+	if(Template::get("partName") == "articles")
+		$currentArticle = Template::get("article");
+	$part = Template::get('partName');	
+	include_once 'macros.phtml';
+	$common = Template::get("common");
+	$server = Template::get('server');
+	$contacts = Template::get('contacts');
+	$target = Template::get('target');
+	$vacancy = Template::get('vacancy');
+	$company = Template::get('company');
+	$more = Template::get('more');
+	$notMain = true;
+	if($part == 'projects' || (count($urlArray) == 0 && $part == 'articles'))
+		$notMain = false;
+	$newsCount = Template::get('newsCount');
+	$mainNews = Template::get('mainNews');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title><?echo stripslashes(Template::get("title"));?></title>
+		<meta name="keywords" content="<?echo stripslashes(Template::get("keywords"));?>" />
+		<meta name="description" content="<?echo stripslashes(Template::get("description"));?>" />
+		<meta name="reply-to" content="http://<? echo $server; ?>" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
+		<!--[if lt IE 7]>
+		<style type="text/css">
+			.site-content{height:expression(this.height < 750?'this.height':'750px');}
+			/*полный бред*/
+		</style>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="shadow"></div>
+		<div class="popup">
+			<div class="header"><span></span><a href="" class="close"><img src="/images/close.png" alt="" /></a></div>
+			<div class="text"></div>
+		</div>
+		<div class="popup2 form" id="why">
+			<div class="annotation">name=contact,onSuccess=onWhy</div>
+			<div class="header"><span>Если не сложно, напишите почему?</span><a href="" class="close"><img src="/images/close.png" alt="" /></a></div>
+			<div class="text formItem">
+				<div class="annotation">required=true,error.required=заполните текст письма</div>
+				<textarea name="text"></textarea>
+				<span class="ok">Спасибо за письмо, мы обязательно прочтем его. Надеемся, это не последнее Ваше письмо нам. До встречи.</span>
+				<div class="errorMessage"></div>
+				<a class="submit" href="">Отправить</a>
+			</div>
+		</div>
+		<?php if($notMain){?>
+		<a href="/" class="main-href"></a>
+		<?php }?>
+		<div class="left-menu">
+			<div class="absolute-container">
+			<div class="slide-menu">
+				<ul class="bg-png-scale">
+					<?php 
+					for($i = 0; $i < count($more); $i++)
+					{?>
+					<li><a href="/<?php echo $more[$i]->url;?>"><?php echo stripslashes($more[$i]->name);?></a></li>	
+					<?php }?>
+				</ul>
+				<a href="/more" class="bg-png-crop"></a>
+			</div>
+			</div>
+		</div>
+		<div class="popup-content">
+			<div id="content_company"><?php echo stripslashes($company->text);?></div>
+			<div id="content_target"><?php echo stripslashes($target->text);?></div>
+			<div id="content_vacancy"><?php echo stripslashes($vacancy->text);?></div>
+			<div id="content_contacts"><?php echo stripslashes($contacts->text);?></div>
+			<div id="title_company"><?php echo stripslashes($company->name);?></div>
+			<div id="title_target"><?php echo stripslashes($target->name);?></div>
+			<div id="title_vacancy"><?php echo stripslashes($vacancy->name);?></div>
+			<div id="title_contacts"><?php echo stripslashes($contacts->name);?></div>
+		</div>
+		<div class="main">
+			<div class="content-wrap">
+				<div class="site-content">
+					<div style="padding:20px 0 230px 60px;">
+					<div class="logo">
+						<a href="/"><img src="/images/logo.png" class="png img" alt="" /></a>
+						<a href="/"><img src="/images/atmlab.png" class="png" alt="" /></a>
+					</div>
+					<div class="top-menu">
+						<a class="padd window" id="company" href="/company">компания</a>
+						<a class="padd window" id="target" href="/target">цели</a>
+						<a class="window" id="vacancy" href="/vacancy">вакансии</a>
+						<img src="/images/phone.png" alt="" class="png"/>
+						<a href="/contacts" class="window" id="contacts">дополнительные способы связи</a>
+					</div>
+					<div class="slogan">
+						<span class="current"></span>
+							<span class="remark">Лаборатория ассимиляции маркетинговых процессов</span>
+							<span class="remark">Рекламное агентство социального конформизма</span>
+							<span class="remark">Бригада автоматизации бизнес-процессов</span>
+						<a href="/">&rarr;</a>
+					</div>
+					<div class="clear"></div>
+					<div <?php if($notMain){?>class="template-content"<?php }?>>
+					<?php 
+					if(count($urlArray) == 0 && $part == 'articles')
+						include 'templates/projects/gallery.phtml';
+					else
+						include 'templates/'.$part.'/'.$part.'.phtml';
+					?>
+					</div>
+					<div class="clear" style="height:40px;"></div>
+					<div class="player">
+						<h2 style="padding-bottom: 10px;">Будни веб-студии</h2>
+						<div id="player"></div>
+					</div>
+					<div class="news-content" style="display:block;">
+						<div class="title"><?php if($newsCount > 0) echo $mainNews[0]->title;?></div>
+						<div class="text"><?php if($newsCount > 0) echo $mainNews[0]->shorttext;?></div>
+					</div>
+					<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="news-block">
+			<span style="display:none;" id="newsc"><?php echo $newsCount;?></span>
+			<a href="/news" onclick="return false;" class="bg-png-crop events"></a>
+			<div class="arrows"><div class="t bg-png-crop"></div><div class="d bg-png-crop" <?php if($newsCount <= 4){?>style="display:none;"<?php }?>></div></div>
+			<div class="news-cont">
+				<ul>
+					<?php for($i = 0; $i < count($mainNews); $i++){?>
+					<li><a href="/news/<?php echo $mainNews[$i]->id;?>"><?php echo stripslashes($mainNews[$i]->title);?></a><span class="ncontent"><?php echo stripslashes($mainNews[$i]->shorttext);?></span></li>
+					<?php }?>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="footer">
+			<div style="padding: 6px 5px 0 5px;">
+			<div class="left-side">
+				Это уже подвал сайта, а вы до сих пор нам не позвонили<br />
+				<a href="" class="why">Если не сложно напишите почему?
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+			</div>
+			<img src="/images/smile.png" width="36" height="37" class="png" alt="" />
+			<div class="right-side">
+				Собирательный образ клиентов<br />
+				воспользовавшихся услугами нашей<br />
+				компании
+			</div>
+			</div>
+			<div class="clear absolute-container" id="label"></div>
+		</div>
+	<script type="text/javascript" src="/compress/js?scripts=/admin/js/jquery,/admin/js/swfobject,/admin/js/XMLParser,/admin/js/Form,/admin/js/common,/js/js"></script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3749103-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	</body>
+</html>

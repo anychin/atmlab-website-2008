@@ -1,0 +1,108 @@
+<?php
+	$config = Config::getInstance();
+	$base_url = $config->adminUrl;
+	include ('views/macros.phtml');
+?>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Административная панель - <?=$this->title;?></title>
+	<link href="<?=$base_url;?>/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$base_url;?>/css/ui/core.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$base_url;?>/css/ui/datepicker.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$base_url;?>/css/ui/theme.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<?=$base_url;?>/js/jquery.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/jquery-json.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/core.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/common.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/AjaxForm.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/swfobject.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/datepicker-ru.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/menu.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/admin.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/js/autocomplete.js"></script>
+	<script type="text/javascript" src="<?=$base_url;?>/editor/tiny_mce_gzip.js"></script>
+</head>
+<body>
+<div class="trace-panel"></div>
+<table class="main">
+	<tr>
+		<td class="menu">
+			<table>
+				<tr>
+					<td><img class="icon-logo" src="/admin/images/logo.gif"/></td>
+					<?
+					for($i = 0; $i < count($this->menu); $i ++)
+					{
+						$item = $this->menu[$i];
+						?>
+						<td nowrap="nowrap">
+							<?
+							if($item->url != null){
+							?>
+								<a href="<?=$base_url.$item->url;?>" class="item"><?=$item->name;?></a>
+							<?}else{ ?>
+								<a class="item"><?=$item->name;?></a>
+							<?} ?>
+							<?if($item->subItems != null) {?>
+								<div class="sub-menu">
+									<?
+										for($j = 0; $j < count($item->subItems); $j++)
+										{
+											$sub = $item->subItems[$j];?>
+											<a href="<?=$base_url.$sub->url;?>"><?=$sub->name;?></a>
+											<?
+										}
+									?>
+								</div>
+							<?} ?>
+						</td>
+					<?}
+					?>
+					<td class="last"><?=$this->currentUser->login;?> <a href="<?=$base_url;?>/logout">Выход</a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="main-content">
+			<div class="buttons-panel"><? include("views/buttons.phtml");?></div>
+			<?=$this->content;?>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+tinyMCE_GZ.init({
+	plugins : 'style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,'+ 
+        'searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,styler,inlinepopups,safari,pagebreak',
+	themes : 'advanced',
+	languages : 'ru',
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
+	var cssUrl = "/css/tiny.css?rnd=" + Math.random();
+	setTimeout(function(){
+		tinyMCE.init({
+			styles:{css:cssUrl, styles:[{name:"borders", title:"Таблицы с границами"},{name:"padd-10", title:"Отступ 10px"},{name:"padd-20", title:"Отступ 20px"},{name:"padd-5", title:"Отступ 5px"}]},
+			language : 'ru',
+			mode : "specific_textareas",
+			editor_selector:"richtext",
+			theme : "advanced",
+			plugins : "safari,pagebreak,style,table,layer,media,advhr,advimage,advlink,preview,iespell,inlinepopups,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,styler",
+			theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect,|,forecolor,backcolor",
+			theme_advanced_buttons2 : "undo,redo,|,fullscreen,|,preview,removeformat,visualaid,|,cut,copy,paste,pastetext,pasteword,|,bullist,numlist,outdent,indent,blockquote,|,sub,sup,charmap,|,visualchars",
+			theme_advanced_buttons3 : "link,unlink,anchor,image,media,code,|,tablecontrols,|,hr,removeformat,|,insertlayer,moveforward,movebackward,absolute",
+			theme_advanced_blockformats:"h1,h2,h3",
+			theme_advanced_toolbar_location : "top",
+			theme_advanced_toolbar_align : "left",
+			theme_advanced_statusbar_location : "bottom",
+			theme_advanced_resizing : "true",
+			relative_urls:false
+		});
+	}, 200);
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<?
+$news = new News(Template::get("news"));
+$category = Template::get("category");
+$categories = Template::get("categories");
+?>
+<div class="form" id="categoryform">
+	<div class="annotation">name=news,successUrl=/admin/news/<?echo $category->url; ?></div>
+	<span class="formItem"><input type="hidden" name="id" value="<? echo $news->id;?>" /></span>
+	<table>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">required=true,type=select</div>
+				Категория
+			</td>
+			<td>
+				<select name='category'>
+					<?
+						for($i = 0; $i < count($categories); $i++){
+							if($categories[$i]->id == $news->category){?>
+								<option value="<?echo $categories[$i]->id; ?>" selected="selected"><?echo $categories[$i]->name; ?></option>
+							<?}else{?>
+								<option value="<?echo $categories[$i]->id; ?>"><?echo $categories[$i]->name; ?></option>
+							<?}
+						}
+					?>
+				</select>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">type=datepicker,name=date</div>
+				Дата:
+			</td>
+			<td>
+				<input type="text" value="<? echo date('d.m.Y', strtotime($news->date)); ?>" class="text"/>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td class="label">
+				<div class="annotation">type=checkbox</div>
+				Опубликована:
+			</td>
+			<td>
+				<?
+					$str = '';
+					if($news->published == 1)
+						$str = "checked='checked'";
+				?>
+				<input name="published" type="checkbox" <? echo $str;?>/>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Изображение:</td>
+			<td>
+				<?php 
+				$image = $news->image;
+				$uploadUrl = "/admin/news/image/upload";
+				$deleteUrl = "/admin/news/image/delete/";
+				$editUrl = '/admin/photo/image/edit?url=/admin/news/'.$category->url.'/edit/'.$news->id.'&id=';
+				$dataid = $news->id;
+				include 'templates/image_uploader.phtml';
+				?>
+			</td>
+		</tr>
+	</table>
+	<table>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Заголовок</div>
+				<div class="annotation">required=true,error.required=Обязательно к заполнению,error.not.valid=не верно</div>
+				<textarea name="title" style="height:30px;"><? echo stripslashes($news->title);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Короткий&nbsp;текст</div>
+				<?php if($presets->useeditor == 1){?>
+				<div class="annotation">type=richtext</div>
+				<textarea name="shorttext" id="richeditor_shorttexttext" class="richtext" style="height:300px;width:100%;"><? echo stripslashes($news->shorttext);?></textarea>
+				<?php }else{?>
+				<textarea name="shorttext" id="richeditor_shorttexttext" style="height:300px;width:100%;"><? echo stripslashes($news->shorttext);?></textarea>
+				<?php }?>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Текст</div>
+				<?php if($presets->useeditor == 1){?>
+				<div class="annotation">type=richtext</div>
+				<textarea name="text" id="richeditor_text" class="richtext" style="height:400px;width:100%;"><? echo stripslashes($news->text);?></textarea>
+				<?php }else{?>
+				<textarea name="text" id="richeditor_text" style="height:400px;width:100%;"><? echo stripslashes($news->text);?></textarea>
+				<?php }?>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Title страницы</div>
+				<textarea name="pagetitle" style="height:30px;"><? echo stripslashes($news->pagetitle);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Keywords страницы</div>
+				<textarea name="keywords" style="height:70px;"><? echo stripslashes($news->keywords);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+		<tr class="formItem">
+			<td>
+				<div class="label-text">Description страницы</div>
+				<textarea name="description" style="height:70px;"><? echo stripslashes($news->description);?></textarea>
+				<div class="errorMessage"></div>
+			</td>
+		</tr>
+	</table>
+</div>

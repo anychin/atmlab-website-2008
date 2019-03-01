@@ -1,0 +1,109 @@
+<?php
+$categories = Template::get('projectCategories');
+$projects = Template::get('projects');
+$realProjects = Template::get('realProjects');
+$photos = Template::get('galleries');
+for($i = 0; $i < count($categories); $i++)
+{
+	$prjs = $projects[$categories[$i]->id];
+	$ids = array();
+	$w = $categories[$i]->imagewidth + 10;
+	if($categories[$i]->url == 'seo')
+		$w = 645;
+	if($categories[$i]->url == 'sites')
+		$w = 289;
+?>
+<table class="projects-line">
+	<tr>
+		<td class="word">
+			<div class="cont" style="width:<?php echo $w?>px">
+				<div class="word-cont">
+					<div class="title"></div>
+					<span><?php echo stripslashes($categories[$i]->name);?></span>
+					<div class="tags"><div><?php echo stripslashes($categories[$i]->description);?></div></div>
+				</div>
+				<a href="" class="imghref"><img src="/images/blank.gif" /></a>
+			</div>
+		</td>
+		<td class="gallery">
+			<div class="annotation" style="width:<?php echo $categories[$i]->imagewidth + 10;?>px"></div>
+			<div class="container">
+				<table class="photos"><tr>
+				<?for($j = 0; $j < count($prjs); $j++){
+					$big = 0;
+					$small = 0;
+					$smallSmooth = 0;
+					$id = 0;
+					$pr = $prjs[$j];
+					$width = 0;
+					$height = 0;
+					$mostbig = 0;
+					$mostwidth = 0;
+					$mostheight = 0;
+					foreach($pr as $name=>$resize)
+					{
+						$id = $resize->id;
+						if(!isset($ids[$id]))
+							$ids[$id] = true;
+						if(!isset($ids[$id]))
+							$ids[$id] = $id;
+						if($name == 'small')
+							$small = $resize->image;
+						if($name == 'smallsmooth')
+							$smallSmooth = $resize->image;
+						if($name == 'big')
+						{
+							$big = $resize->image;
+							$width = $resize->width;
+							$height = $resize->height;
+						}
+						if($name == 'mostbig'){
+							$mostbig = $resize->image;
+							$mostheight = $resize->height;
+							$mostwidth = $resize->width;
+						}
+					}
+					$alt = "";
+					if($categories[$i]->url == 'sites')
+						$alt = 'Создание сайта - ';
+					if($categories[$i]->url == 'seo')
+						$alt = 'Продвижение - ';
+					if($categories[$i]->url == 'design')
+						$alt = 'Графдизайн - ';
+					$alt .= stripslashes($realProjects[$id]->title);
+				?>
+					<td><a href="" id="project<?php echo $id;?>" class="<?php echo $small.'_'.$smallSmooth.'_'.$big.'_'.$width.'_'.$height.'_'.$mostbig.'_'.$mostwidth.'_'.$mostheight; ?>"><img src="/images/uploaded/<?php echo $smallSmooth; ?>.jpg" alt="<?php echo $alt;?>" width="56" height="56"/></a></td>
+				<?}?>
+				</tr></table>
+			</div>
+			<?php foreach($ids as $id=>$key){
+				$project = $realProjects[$id];
+			?>
+			<div class="text-content" id="description<?php echo $project->id;?>">
+				<?php
+				if(isset($photos[$project->gallery])){
+					$width = 3 * 60;
+					if(count($photos[$project->gallery]) < 7)
+						$width = 2 * 60;
+					if(count($photos[$project->gallery]) < 4)
+						$width = 60;
+					?>
+					<div class="more-photo" style="width:<?php echo $width;?>px">
+					<?php 
+					foreach($photos[$project->gallery] as $id=>$photo){
+						?>
+						<a href="/images/uploaded/original/<?php echo $id;?>.jpg" id="<?php echo $photo['big']['id'].'_'.$id.'_'.$photo['big']['height'].'_'.$photo['mostbig']['id'].'_'.$photo['mostbig']['width'].'_'.$photo['mostbig']['height'].'_'.$photo['big']['width'].'_'.$photo['big']['height'];?>"><img src="/images/uploaded/<?php echo $photo['small']['id'];?>.jpg" alt="<?php echo $alt;?>" /></a>
+					<?php }?>
+					</div>
+				<?php }?>
+				<h2><?php echo stripslashes($project->title);?></h2>
+				<noindex><a href="http://<?php echo $project->site;?>" rel="nofollow"><?php echo $project->site;?></a></noindex>
+				<div class="description"><?php echo stripslashes($project->description);?></div>
+			</div>
+			<?php }?>
+			
+		</td>
+	</tr>
+</table>
+<?php }
+?>

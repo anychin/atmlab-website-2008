@@ -1,0 +1,88 @@
+<?
+$template = Template::getAll();
+?>
+<html>
+<head>
+<title>Административная панель - Аутентификация</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<base href="http://<?echo $template["server"];?>/admin/"/>
+<script type="text/javascript" src="js/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/XMLParser.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/Form.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/common.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+	formUrl = "/admin/form/";
+	function onResponse(response, formData){
+		if(response.errors[0].error == undefined){
+			document.location.href = "/admin/"
+			return;
+		}
+		var error = response.errors[0].error[0];
+		formData.addError(error.name, error.value);
+	}
+</script>
+<style media="screen">
+	body, html{padding:0px;margin:0px;width:100%;height:100%;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;}
+	table, td, tr{padding:0px;margin:0px;border-width:0px;border-collapse:collapse;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;}
+	td{vertical-align: top;}
+	.left{width: 180px;}
+	.left img{margin:20px 0px 10px 20px;}
+	.left div{padding-left:20px;}
+	.wrap{width: 100%;height:100%;}
+	.panel{width:430px;height:220px;background-color:#F1F3F5;border:1px solid #cccccc;}
+	.form{padding:8px 0px 0px 28px;}
+	.cont{width:210px;height:200px;border:1px solid #cccccc;background-color:#E9ECEF;text-align:left;}
+	.button {border : solid 1px #cccccc;background: #E9ECEF;color : #666666;font-weight : bold;font-size : 11px;}
+	.big {background: url(images/login_header.gif) no-repeat;background-position: 10px 5px;color: #333;height: 45px;}
+	.annotation{display: none;}
+	.label{font-weight: bold;}
+	.formItemError, .formItem, .bb{padding:0px 0px 0px 10px;}
+	.formItemError .label{color:#ff0000;}
+	.errorMessage{color:#ff0000;height:15px;font-size: 10px;}
+	input.text{border:1px solid #cccccc;height:20px;width:150px;}
+</style>
+</head>
+<body>
+<table class="wrap"><tr><td style="vertical-align: middle;" align="center">
+	<table height="100%" width="100%" class="panel">
+		<tr>
+			<td class="left">
+				<img src="images/security.png"/>
+				<div style="text-align:left">
+					Добро пожаловать в панель управления!<br /><br />
+					Для входа в систему введите правильные имя и пароль.
+				</div>
+			</td>
+			<td class="form" id="authform">
+				<div class="annotation">name=auth,onResponse=onResponse</div>
+				<div class="cont">
+					<div class="big">&nbsp;</div>
+					<div class="formItem">
+						<span class="annotation">required=true,error.not.exists=Пользователь не существует,error.required=Обязательно для заполнения,error.not.admin=Доступ запрещен,error.blocked=Заблокирован</span>
+						<span class="label">Имя пользователя:</span><br />
+						<input type="text" class="text" name="login" value="">
+						<div class="errorMessage"></div>
+					</div>
+					<div class="formItem">
+						<span class="annotation">required=true,error.required=Обязательно для заполнения,error.not.valid=Неверный пароль</span>
+						<span class="label">Пароль:</span><br />
+						<input type="password" class="text" name="password" value="">
+						<div class="errorMessage"></div>
+					</div>
+					<div class="formItem" style="padding-bottom:5px;">
+						<span class="annotation">type=checkbox</span>
+						<input type="checkbox" name="remember" id="rmbr"/>
+						<label class="label" for="rmbr" style="font-weight: normal;font-size: 11px;">Запомнить</label>
+					</div>
+					<div class="bb">
+						<input type="submit" name="submit" class="button" value="Вход" />
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</td></tr></table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?$title =$button->message;?>
+<a href="<?=$button->url;?>" title="<?=$title ?>">
+	<?if(isset($button->data['img'])){ ?>
+		<img src="<? echo $button->data['img']; ?>" alt="<?=$title ?>" align="middle" class="png" width="44" height="44"/>
+	<?}else{ ?>
+		<div class="b"><img src="<?=$base_url;?>/images/button-create.png" alt="<?=$title; ?>" align="middle" class="png" width="44" height="44"/></div>
+	<?} ?>
+	<div class="l"><span><?=$title; ?></span></div>
+</a>
+<div class="clear"></div>

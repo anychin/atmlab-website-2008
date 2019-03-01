@@ -1,0 +1,102 @@
+<?
+$atoms = array();
+if(Template::get("category")){
+	$category = Template::get("category");
+	$atoms = explode(".", $category->code);
+}
+if(Template::get("okCategory")){
+	$category = Template::get("okCategory");
+	$atoms = explode(".", $category->code);
+}
+	
+function printCategories($parent = 0, $atoms)
+{
+	$categories = Template::get("categories");
+	$cat = Template::get("category");
+	if(count($categories) == 0)
+		return;
+	foreach($categories[$parent] as $category)
+	{	
+		$inPath = false;
+		if($atoms[0] == $category->code && $atoms[0] != $cat->code){
+			$a = $atoms[0];
+			$inPath = true;
+			$atoms = ArrayUtil::splice($atoms, 1);
+			$atoms[0] = $a.".".$atoms[0];
+		}
+	?>
+		<table class="item" id="category<? echo $category->id; ?>">
+			<tr>
+				<td class="plus" id="plus<? echo $category->id; ?>">
+					<?if(count($categories[$category->id]) > 0){
+						$minusStyle = $plusStyle = "";
+						if($inPath)
+							$plusStyle = "display:none;";
+						else 
+							$minusStyle = "display:none;";
+					?>
+					<img src="/admin/images/plus.gif" onclick="CatalogCategory.plus(<?echo $category->id; ?>);" alt=""  width="9" height="9" style="<? echo $plusStyle; ?>"/>
+					<img src="/admin/images/minus.gif" onclick="CatalogCategory.minus(<?echo $category->id; ?>);"  alt="" width="9" height="9" style="<?echo $minusStyle; ?>"/>
+					<?}?>
+				</td>
+				<td class="title"><a href="/admin/catalog/categories/edit/<? echo $category->id; ?>"><? echo stripslashes($category->name); ?></a></td>
+				<td class="buttons">
+					<table><tr>
+						<td><a href="/admin/catalog/categories/new/<? echo $category->id; ?>" title="Добавить подраздел"><img src="/admin/images/add.gif" width="12" height="12" alt="Добавить подраздел"/></a></td>
+						<td>
+							<?
+								$publStyle = $unpublStyle = "";
+								if($category->published == 1)
+									$unpublStyle = "display:none;";
+								else 
+									$publStyle = "display:none;";
+							?>
+							<img src="/admin/images/spacer.gif" onclick="CatalogCategory.publish(<?echo $category->id; ?>);" class="publ" style="<?echo $publStyle; ?>" width="12" height="12" alt="Опубликовать" />
+							<img src="/admin/images/spacer.gif" onclick="CatalogCategory.unpublish(<?echo $category->id; ?>);" style="<?echo $unpublStyle; ?>" class="unpubl" width="12" height="12" alt="Скрыть" />
+						</td>
+						<td><img src="/admin/images/spacer.gif" onclick="CatalogCategory.del(<?echo $category->id; ?>);" class="del" width="12" height="12" alt="Удалить" /></td>
+						<td><img src="/admin/images/spacer.gif" onclick="CatalogCategory.down(<?echo $category->id; ?>);" class="down" width="12" height="12" /></td>
+						<td class="count"><? echo $category->ord; ?></td>
+						<td><img src="/admin/images/spacer.gif" onclick="CatalogCategory.up(<?echo $category->id; ?>);" class="up" width="12" height="12" /></td>
+					</tr></table>
+				</td>
+			</tr>
+		</table>
+		<?if(count($categories[$category->id]) > 0){
+			$vis = "";
+			if($inPath)
+				$vis = "display:block;";
+			?>
+			<table class="sub" id="sub<?echo $category->id; ?>" style="<?echo $vis; ?>">
+				<tr>
+					<td class="sub-td"><?printCategories($category->id, $atoms); ?></td>
+				</tr>
+			</table>
+		<?} ?>
+	<?}
+}
+?>
+<table class="catalog-content">
+	<tr>
+		<td class="left-panel">
+			<table class="all">
+				<tr>
+					<td class="all">
+						<?printCategories(0, $atoms);?>
+						<div class="create"><img src="/admin/images/add.gif" width="12" height="12" alt="Добавить категорию" style="position: relative;top:3px;"/> <a href="/admin/catalog/categories/new">Новая категория</a></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="right-panel">
+			<?if(Template::get("category")){ ?>
+			<div class="ok-panel">
+				Изменения сохранены
+			</div>
+			<div class="wrap">
+				<?include 'form.phtml';?>
+			</div>
+			<?} ?>
+		</td>
+	</tr>
+</table>

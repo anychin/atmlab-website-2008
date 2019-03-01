@@ -1,0 +1,21 @@
+<?
+	$roles = Template::get("roles");
+?>
+<table class="list">
+	<tr class="header">
+		<td class="title">Название</td>
+		<td class="delete">&nbsp;</td>
+	</tr>
+<?
+	for($i = 0; $i < count($roles); $i++)
+	{
+		$style = '';
+		if($i % 2 == 0)
+			$style = "class='dark'";
+	?>
+	<tr id="role<? echo $roles[$i]->id; ?>" <? echo $style;?>>
+		<td class="title"><a href="/admin/users/roles/edit/<? echo $roles[$i]->id;?>"><? echo $roles[$i]->name;?></a></td>
+		<td class="delete"><img src="images/spacer.gif" onclick="Role.del(<?echo $roles[$i]->id; ?>);" width="12" height="12" class="del" alt="Удалить" /></td>
+	</tr>
+    <?}?>
+</table>
